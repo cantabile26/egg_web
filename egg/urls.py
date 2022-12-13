@@ -4,11 +4,15 @@ from django.conf.urls.static import static
 from django.conf import settings
 from main import urls as main
 from eggtemp import urls as eggtemp
+from eggpagetemp import urls as eggpagetemp
+from eggtabletemp import urls as eggtabletemp
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(main)),
     path('eggtemp/', include(eggtemp)),
+    path('eggpagetemp/', include(eggpagetemp)),
+    path('eggtabletemp/', include(eggtabletemp)),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
