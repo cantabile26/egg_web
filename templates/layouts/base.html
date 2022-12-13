@@ -46,20 +46,26 @@
   <link type="text/css" href="{% static 'css/volt.css' %}" rel="stylesheet">
 
   <!-- Css load  -->    
-  {% block stylesheets %}{% endblock stylesheets %}
+  {% block stylesheets %}
+  
+  {% endblock stylesheets %}
 
 </head>
 <body>
     {% include 'includes/sidebar.html' %}
     <main class="content">
       {% include 'includes/navigation.html' %}
-      {% block content %}{% endblock content %}
+      {% block content %}
+      
+      {% endblock content %}
       {% comment %} {% include 'includes/settings-box.html' %} {% endcomment %}
       {% include 'includes/footer.html' %}
     </main>
   {% include 'includes/scripts.html' %}
     
   <!-- JavaScript load  -->
-  {% block javascripts %}{% endblock javascripts %}  
+  {% block javascripts %}
+  
+  {% endblock javascripts %}  
 </body>
 </html>

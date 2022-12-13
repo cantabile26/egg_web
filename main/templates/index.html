@@ -1,15 +1,23 @@
 {% extends 'layouts/base.html' %}
+{% block title %} 계란선별-메인 {% endblock %} 
 {% load static %}
 {% comment %} css {% endcomment %}
-{% block stylesheets %}{% endblock stylesheets %}
+{% block stylesheets %}
+<link href="{% static 'css/main/main.css' %}" rel = "stylesheet">
+{% endblock stylesheets %}
 
 {% block content %}
-  <div>
-    <h2>메인화면입니다.</h2>
+
+  <div class="row">
+    <div class="col-lg-1 col-md-0 col-sm-0" style="background-color: blue;"></div>
+    <div class="col-lg-10 col-md-12 col-sm-12 test">
+      <h2>메인화면입니다.</h2>
+      <h1>
+        test
+      </h1>
+    </div>
+    <div class="col-lg-1 col-md-0 col-sm-0" style="background-color: blue;"></div>
   </div>
-  <h1>
-    test
-  </h1>
   
 {% endblock content %}
 
