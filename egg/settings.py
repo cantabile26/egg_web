@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'eggtemp',
+    'side_test',
 ]
 
 MIDDLEWARE = [

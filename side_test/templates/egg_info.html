@@ -1,0 +1,58 @@
+{% extends 'layouts/base.html' %}
+{% block title %} sidebar_test {% endblock %} 
+{% load static %}
+{% comment %} css {% endcomment %}
+{% block stylesheets %}
+{% endblock stylesheets %}
+
+{% block content %}
+<html lang="ko">
+
+<br>
+<div class="row">
+    <div class="col-6 mb-3">
+        <div class="card border-light shadow-sm components-section">
+            <div class="card-body">
+                    <!-- 산란 정보 본체 -->
+                    <div class="mt-4 mb-1">
+                        <h2><mark style = "background-color:Orange">산란정보</mark></h2>
+                    </div>
+                    <div>
+                        <br>
+                        <br>
+                        <a> 계란이 들어올 div </a>
+                        <br>
+                        <br>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 mb-3">
+        <div class="card border-light shadow-sm components-section">
+            <div class="card-body">
+                    <!-- 상세 계란 정보 -->
+                    <div class="mt-4 mb-1">
+                        <h2><mark style = "background-color:Green">산란 상세 정보</mark></h2>
+                    </div>
+                    <div>
+                        <br>
+                        <br>
+                        <a> 상세 테이블 및 그래프 예상 </a>
+                        <br>
+                        <br>
+                    </div>
+                    <button type="button" class="btn btn-primary d-inline-flex align-items-center">
+                        Update
+                    </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</html>
+{% endblock content %}
+
+{% comment %} js {% endcomment %}
+{% block javascripts %}{% endblock javascripts %}
