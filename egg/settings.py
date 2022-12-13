@@ -15,6 +15,7 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+print('base_dir', BASE_DIR)
 
 
 # Quick-start development settings - unsuitable for production
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    'eggtemp',
 ]
 
 MIDDLEWARE = [
