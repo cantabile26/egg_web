@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'main',
     'eggtemp',
     'side_test',
+    'eggpagetemp',
+    'eggtabletemp',
 ]
 
 MIDDLEWARE = [

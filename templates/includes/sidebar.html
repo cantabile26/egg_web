@@ -66,7 +66,7 @@
         <span class="sidebar-text">Settings</span>
       </a>
     </li>
-    <li class="nav-item {% if 'tables-bootstrap-' in segment %} active {% endif %}">
+    <li class="nav-item {% if 'eggtabletemp' in segment %} active {% endif %}">
       <span
         class="nav-link  collapsed  d-flex justify-content-between align-items-center"
         data-bs-toggle="collapse" data-bs-target="#submenu-app">
@@ -80,18 +80,18 @@
           <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
         </span>
       </span>
-      <div class="multi-level collapse {% if 'tables-bootstrap-' in segment %} show {% endif %}"
+      <div class="multi-level collapse {% if 'eggtabletemp' in segment %} show {% endif %}"
         role="list" id="submenu-app" aria-expanded="false">
         <ul class="flex-column nav">
-          <li class="nav-item {% if 'bootstrap-tables' in segment %} active {% endif %}">
-            <a class="nav-link" href="/tables-bootstrap-tables.html">
+          <li class="nav-item {% if 'eggtabletemp' in segment and 'bootstrap-tables' in segment %} active {% endif %}">
+            <a class="nav-link" href="{% url 'eggtabletemp:bootstrapTablesPage' %}">
               <span class="sidebar-text">Bootstrap Tables</span>
             </a>
           </li>
         </ul>
       </div>
     </li>
-    <li class="nav-item {% if 'page-' in segment %} active {% endif %}">
+    <li class="nav-item {% if 'eggpagetemp' in segment %} active {% endif %}">
       <span
         class="nav-link  collapsed  d-flex justify-content-between align-items-center"
         data-bs-toggle="collapse" data-bs-target="#submenu-pages">
@@ -105,41 +105,46 @@
           <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
         </span>
       </span>
-      <div class="multi-level collapse {% if 'page-' in segment %} show {% endif %} " role="list"
+      <div class="multi-level collapse {% if 'eggpagetemp' in segment %} show {% endif %} " role="list"
         id="submenu-pages" aria-expanded="false">
         <ul class="flex-column nav">
           <li class="nav-item">
-            <a class="nav-link" href="/page-sign-in.html">
+            <a class="nav-link" href="{% url 'eggpagetemp:signInViewPage' %}">
               <span class="sidebar-text">Sign In</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/page-sign-up.html">
+            <a class="nav-link" href="{% url 'eggpagetemp:signOutViewPage' %}">
               <span class="sidebar-text">Sign Up</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/page-forgot-password.html">
+            <a class="nav-link" href="{% url 'eggpagetemp:forgotPassViewPage' %}">
               <span class="sidebar-text">Forgot password</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/page-reset-password.html">
+            <a class="nav-link" href="{% url 'eggpagetemp:resetPassViewPage' %}">
               <span class="sidebar-text">Reset password</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/page-lock.html">
+            <a class="nav-link" href="{% url 'eggpagetemp:pageLockViewPage' %}">
               <span class="sidebar-text">Lock</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/page-404.html">
+            <a class="nav-link" href="{% url 'eggpagetemp:page403ViewPage' %}">
+              <span class="sidebar-text">403 Not Found</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'eggpagetemp:page404ViewPage' %}">
               <span class="sidebar-text">404 Not Found</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/page-500.html">
+            <a class="nav-link" href="{% url 'eggpagetemp:page500ViewPage' %}">
               <span class="sidebar-text">500 Not Found</span>
             </a>
           </li>
