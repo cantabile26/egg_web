@@ -41,3 +41,12 @@ def typographyView(request):
   context['segment'] = load_template
   
   return render(request, "typography_template.html", context)
+
+
+def gridtestView(request):
+  context = {}
+  
+  load_template = request.path.split('/')
+  context['segment'] = load_template
+  
+  return render(request, "grid_test.html", context)
