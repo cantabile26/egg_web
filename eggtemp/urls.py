@@ -9,5 +9,6 @@ urlpatterns = [
     path('forms/', views.formsView, name="formsViewPage"),
     path('modals/', views.modalsView, name="modalsViewPage"),
     path('typography/', views.typographyView, name="typographyViewPage"),
+    path('gridtest/', views.gridtestView, name="gridtestViewPage"),
 ]
 

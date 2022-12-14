@@ -85,6 +85,11 @@
         <ul class="flex-column nav">
           <li class="nav-item {% if 'eggtabletemp' in segment and 'bootstrap-tables' in segment %} active {% endif %}">
             <a class="nav-link" href="{% url 'eggtabletemp:bootstrapTablesPage' %}">
+              <span class="sidebar-text">Bootstrap Tables-sh</span>
+            </a>
+          </li>
+          <li class="nav-item {% if 'bootstrap-tables' in segment %} active {% endif %}">
+            <a class="nav-link" href="../hyeoklayout/sam_ple.html">
               <span class="sidebar-text">Bootstrap Tables</span>
             </a>
           </li>
@@ -193,6 +198,11 @@
           <li class="nav-item {% if 'eggtemp' in segment and 'typography' in segment %} active {% endif %}">
             <a class="nav-link" href="{% url 'eggtemp:typographyViewPage' %}">
               <span class="sidebar-text">Typography</span>
+            </a>
+          </li>
+          <li class="nav-item {% if 'eggtemp' in segment and 'gridtest' in segment %} active {% endif %}">
+            <a class="nav-link" href="{% url 'eggtemp:gridtestViewPage' %}">
+              <span class="sidebar-text">aaaaaa</span>
             </a>
           </li>
           
