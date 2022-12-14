@@ -85,12 +85,12 @@
         <ul class="flex-column nav">
           <li class="nav-item {% if 'eggtabletemp' in segment and 'bootstrap-tables' in segment %} active {% endif %}">
             <a class="nav-link" href="{% url 'eggtabletemp:bootstrapTablesPage' %}">
-              <span class="sidebar-text">Bootstrap Tables-sh</span>
+              <span class="sidebar-text">Bootstrap Tables</span>
             </a>
           </li>
-          <li class="nav-item {% if 'bootstrap-tables' in segment %} active {% endif %}">
-            <a class="nav-link" href="../hyeoklayout/sam_ple.html">
-              <span class="sidebar-text">Bootstrap Tables</span>
+          <li class="nav-item {% if 'eggtabletemp' in segment %} active {% endif %}">
+            <a class="nav-link" href="{% url 'eggtabletemp:eggdetectTablesPage' %}">
+              <span class="sidebar-text">계란 선별기</span>
             </a>
           </li>
         </ul>
