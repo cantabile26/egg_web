@@ -6,6 +6,7 @@ from main import urls as main
 from eggtemp import urls as eggtemp
 from eggpagetemp import urls as eggpagetemp
 from eggtabletemp import urls as eggtabletemp
+from users import urls as users
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -13,6 +14,7 @@ urlpatterns = [
     path('eggtemp/', include(eggtemp)),
     path('eggpagetemp/', include(eggpagetemp)),
     path('eggtabletemp/', include(eggtabletemp)),
+    path('users/', include(users)),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)

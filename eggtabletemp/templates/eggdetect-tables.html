@@ -1,0 +1,338 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block title %} 계란선별-테이블 {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="py-4">
+    <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
+        <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
+            <li class="breadcrumb-item">
+                <a href="#">
+                    <svg class="icon icon-xxs" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                </a>
+            </li>
+            <li class="breadcrumb-item"><a href="#">Tables</a></li>
+            <li class="breadcrumb-item active" aria-current="page">계란 선별기</li>
+        </ol>
+    </nav>
+    <div class="d-flex justify-content-between w-100 flex-wrap">
+        <div class="mb-3 mb-lg-0">
+            <h1 class="h4">계란 선별기</h1>
+            <p class="mb-0">이미지를 업로드 하시면 계란불량요소들을 판별해 드립니다.</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-12 col-lg-6">
+        <div class="card border-0 shadow mb-4 ">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-centered table-nowrap mb-0 rounded">
+                        <td class="border-0">  
+
+                            <h5 style="text-align:center">
+                                계란데이터 입력
+                            </h5>
+                            <div class="row">
+                            <div class="col">
+                                <img alt="이미지 오류" src="{{ ASSETS_ROOT }}/img/egg_detect.jpg" style="display: block; margin: 0 auto; ">
+                            </div>
+
+                            <div class="col">
+                                <img alt="이미지 오류" src="{{ ASSETS_ROOT }}/img/arrow.png" style="display: block; margin: 0 auto;">
+                            </div>
+
+                            <div class="col">
+                                <img alt="이미지 오류" src="{{ ASSETS_ROOT }}/img/egg_detect2.jpg" style="display: block; margin: 0 auto;">
+                            </div>
+                            </div>
+
+                        </td>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-12 col-lg-6">
+        <div class="col">
+            <div class="col-lg-4 card border-0 shadow ms-5 mb-4">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-centered table-nowrap mb-0 rounded">
+                            <div>
+                                계란 디텍팅 진행 상황 설명이 들어갈곳
+                            </div>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 card border-0 shadow ms-5 mb-4">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-centered table-nowrap mb-0 rounded">
+                            <div>
+                                계란 디텍팅 시스템작동 내용이 들어갈곳
+                            </div>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="card border-0 shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-centered table-nowrap mb-0 rounded">
+                <div>
+                    분석결과 출력할곳
+                </div>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card border-0 shadow">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-centered table-nowrap mb-0 rounded">
+                <thead class="thead-light">
+                    <tr>
+                        <th class="border-0 rounded-start">Country</th>
+                        <th class="border-0">All</th>
+                        <th class="border-0">All Change</th>
+                        <th class="border-0">Travel & Local</th>
+                        <th class="border-0">Travel & Local Change</th>
+                        <th class="border-0">Widgets</th>
+                        <th class="border-0 rounded-end">Widgets Change</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Item -->
+                    <tr>
+                        <td class="border-0">                                             
+                            <a href="#" class="d-flex align-items-center">
+                                <img class="me-2 image image-small rounded-circle" alt="Image placeholder" src="{{ ASSETS_ROOT }}/img/flags/united-states-of-america.svg">
+                                <div><span class="h6">United States</span></div>
+                            </a>
+                        </td>
+                        <td class="border-0 fw-bold">106</td>
+                        <td class="border-0 text-danger">
+                            <div class="d-flex align-items-center">
+                                <svg class="icon icon-xs me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                <span class="fw-bold">5</span>
+                            </div> 
+                        </td>
+                        <td class="border-0 fw-bold">
+                            3 
+                        </td>
+                        <td class="border-0">
+                            =
+                        </td>
+                        <td class="border-0 fw-bold">
+                            32  
+                        </td>
+                        <td class="border-0 text-success">
+                            <div class="d-flex align-items-center">
+                                <svg class="icon icon-xs me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>                                   
+                                <span class="fw-bold">3</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- End of Item -->
+
+                    <!-- Item -->
+                    <tr>
+                        <td class="border-0">                                             
+                            <a href="#" class="d-flex align-items-center">
+                                <img class="me-2 image image-small rounded-circle" alt="Image placeholder" src="{{ ASSETS_ROOT }}/img/flags/canada.svg">
+                                <div><span class="h6">Canada</span></div>
+                            </a>
+                        </td>
+                        <td class="border-0 fw-bold">76</td>
+                        <td class="border-0 text-success">
+                            <div class="d-flex align-items-center">
+                                <svg class="icon icon-xs me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>                                   
+                                <span class="fw-bold">17</span>
+                            </div>
+                        </td>
+                        <td class="border-0 fw-bold">
+                        4 
+                        </td>
+                        <td class="border-0">
+                        =
+                        </td>
+                        <td class="border-0 fw-bold">
+                        30  
+                        </td>
+                        <td class="border-0 text-success">
+                            <div class="d-flex align-items-center">
+                                <svg class="icon icon-xs me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>                                   
+                                <span class="fw-bold">3</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- End of Item -->
+
+                    <!-- Item -->
+                    <tr>
+                        <td class="border-0">                                             
+                            <a href="#" class="d-flex align-items-center">
+                                <img class="me-2 image image-small rounded-circle" alt="Image placeholder" src="{{ ASSETS_ROOT }}/img/flags/united-kingdom.svg">
+                                <div><span class="h6">United Kingdom</span></div>
+                            </a>
+                        </td>
+                        <td class="border-0 fw-bold">147</td>
+                        <td class="border-0 text-success">
+                            <div class="d-flex align-items-center">
+                                <svg class="icon icon-xs me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>                                   
+                                <span class="fw-bold">10</span>
+                            </div>
+                        </td>
+                        <td class="border-0 fw-bold">
+                        5 
+                        </td>
+                        <td class="border-0">
+                        =
+                        </td>
+                        <td class="border-0 fw-bold">
+                        34  
+                        </td>
+                        <td class="border-0 text-success">
+                            <div class="d-flex align-items-center">
+                                <svg class="icon icon-xs me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>                                   
+                                <span class="fw-bold">7</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- End of Item -->
+
+                    <!-- Item -->
+                    <tr>
+                        <td class="border-0">                                             
+                            <a href="#" class="d-flex align-items-center">
+                                <img class="me-2 image image-small rounded-circle" alt="Image placeholder" src="{{ ASSETS_ROOT }}/img/flags/france.svg">
+                                <div><span class="h6">France</span></div>
+                            </a>
+                        </td>
+                        <td class="border-0 fw-bold">112</td>
+                        <td class="border-0 text-success">
+                            <div class="d-flex align-items-center">
+                                <svg class="icon icon-xs me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>                                   
+                                <span class="fw-bold">3</span>
+                            </div>
+                        </td>
+                        <td class="border-0 fw-bold">
+                        5 
+                        </td>
+                        <td class="border-0 text-success">
+                            <div class="d-flex align-items-center">
+                                <svg class="icon icon-xs me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>                                   
+                                <span class="fw-bold">1</span>
+                            </div>
+                        </td>
+                        <td class="border-0 fw-bold">
+                        34  
+                        </td>
+                        <td class="border-0 text-danger">
+                            <div class="d-flex align-items-center">
+                                <svg class="icon icon-xs me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                <span class="fw-bold">2</span>
+                            </div> 
+                        </td>
+                    </tr>
+                    <!-- End of Item -->
+
+                    <!-- Item -->
+                    <tr>
+                        <td class="border-0">                                             
+                            <a href="#" class="d-flex align-items-center">
+                                <img class="me-2 image image-small rounded-circle" alt="Image placeholder" src="{{ ASSETS_ROOT }}/img/flags/japan.svg">
+                                <div><span class="h6">Japan</span></div>
+                            </a>
+                        </td>
+                        <td class="border-0 fw-bold">115</td>
+                        <td class="border-0 text-danger">
+                            <div class="d-flex align-items-center">
+                                <svg class="icon icon-xs me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                <span class="fw-bold">12</span>
+                            </div> 
+                        </td>
+                        <td class="border-0 fw-bold">
+                        6 
+                        </td>
+                        <td class="border-0 text-danger">
+                            <div class="d-flex align-items-center">
+                                <svg class="icon icon-xs me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                <span class="fw-bold">1</span>
+                            </div> 
+                        </td>
+                        <td class="border-0 fw-bold">
+                        37  
+                        </td>
+                        <td class="border-0 text-danger">
+                            <div class="d-flex align-items-center">
+                                <svg class="icon icon-xs me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                <span class="fw-bold">5</span>
+                            </div> 
+                        </td>
+                    </tr>
+                    <!-- End of Item -->
+
+                    <!-- Item -->
+                    <tr>
+                        <td class="border-0">                                             
+                            <a href="#" class="d-flex align-items-center">
+                                <img class="me-2 image image-small rounded-circle" alt="Image placeholder" src="{{ ASSETS_ROOT }}/img/flags/germany.svg">
+                                <div><span class="h6">Germany</span></div>
+                            </a>
+                        </td>
+                        <td class="border-0 fw-bold">220</td>
+                        <td class="border-0 text-danger">
+                            <div class="d-flex align-items-center">
+                                <svg class="icon icon-xs me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                <span class="fw-bold">56</span>
+                            </div> 
+                        </td>
+                        <td class="border-0 fw-bold">
+                            7 
+                        </td>
+                        <td class="border-0 text-danger">
+                            <div class="d-flex align-items-center">
+                                <svg class="icon icon-xs me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                <span class="fw-bold">3</span>
+                            </div> 
+                        </td>
+                        <td class="border-0 fw-bold">
+                            30  
+                        </td>
+                        <td class="border-0 text-success">
+                            <div class="d-flex align-items-center">
+                                <svg class="icon icon-xs me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>                                   
+                                <span class="fw-bold">2</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- End of Item -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
