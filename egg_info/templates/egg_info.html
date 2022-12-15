@@ -1,5 +1,5 @@
 {% extends 'layouts/base.html' %}
-{% block title %} sidebar_test {% endblock %} 
+{% block title %} egg_info_test {% endblock %} 
 {% load static %}
 {% comment %} css {% endcomment %}
 {% block stylesheets %}
@@ -29,8 +29,10 @@
                     <!-- 산란 정보 본체 -->
                 <div class="row">
                         <div class="col-sm-2 p-3 bg-success text-white" align = "center">
-                            <div class = 
-                            <img src = "{% static 'image/illustrations/normal_egg.png' %}" rel="stylesheet">
+                                <div>
+                                    <img src = "{% static 'image/illustrations/normal_egg.png' %}" rel="stylesheet">
+                                    <p>data-in</p>
+                                </div>
                             <span class = "h5">전체 계란</span>
                         </div>
                         <div class="col-sm-2 p-3 bg-primary text-white" align = "center">
@@ -79,7 +81,7 @@
                         <tr>
                             <td class="border-0">                                             
                                 <a href="#" class="d-flex align-items-center">
-                                    <div><span class="h6">헛간</span></div>
+                                    <div><span class="h6">일동</span></div>
                                 </a>
                             </td>
                             <td class="border-0 fw-bold">
@@ -107,7 +109,7 @@
                         <tr>
                             <td class="border-0">                                             
                                 <a href="#" class="d-flex align-items-center">
-                                    <div><span class="h6">스타벅스</span></div>
+                                    <div><span class="h6">이동</span></div>
                                 </a>
                             </td>
                             <td class="border-0 fw-bold">
@@ -135,7 +137,7 @@
                         <tr>
                             <td class="border-0">                                             
                                 <a href="#" class="d-flex align-items-center">
-                                    <div><span class="h6">이디야</span></div>
+                                    <div><span class="h6">삼동</span></div>
                                 </a>
                             </td>
                             <td class="border-0 fw-bold">
@@ -163,7 +165,7 @@
                         <tr>
                             <td class="border-0">                                             
                                 <a href="#" class="d-flex align-items-center">
-                                    <div><span class="h6">백다방</span></div>
+                                    <div><span class="h6">사동</span></div>
                                 </a>
                             </td>
                             <td class="border-0 fw-bold">
@@ -191,7 +193,7 @@
                         <tr>
                             <td class="border-0">                                             
                                 <a href="#" class="d-flex align-items-center">
-                                    <div><span class="h6">투썸플레이스</span></div>
+                                    <div><span class="h6">오동</span></div>
                                 </a>
                             </td>
                             <td class="border-0 fw-bold">
@@ -219,7 +221,7 @@
                         <tr>
                             <td class="border-0">                                             
                                 <a href="#" class="d-flex align-items-center">
-                                    <div><span class="h6">할리스커피</span></div>
+                                    <div><span class="h6">육동</span></div>
                                 </a>
                             </td>
                             <td class="border-0 fw-bold">
@@ -244,11 +246,18 @@
                         <!-- End of Item -->
                         </tbody>
                     </table>
-                    <button class="btn btn-gray-200" type="button">
-                        <a href="{{ request.get_full_path }}">
-                        새로고침
-                        </a>
-                    </button>
+                    <div>
+                        <button class="btn btn-gray-200" type="button">
+                            <a href="{{ request.get_full_path }}">
+                            F5
+                            </a>
+                        </button>
+                        <button class="btn btn-gray-200" type="button">
+                            <a href="{% url 'egg_info:egg_data_upload' %}">
+                            upload
+                            </a>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

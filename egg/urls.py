@@ -4,7 +4,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from main import urls as main
 from eggtemp import urls as eggtemp
-from side_test import urls as side_test
+from egg_info import urls as egg_info
 from eggpagetemp import urls as eggpagetemp
 from eggtabletemp import urls as eggtabletemp
 
@@ -12,7 +12,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(main)),
     path('eggtemp/', include(eggtemp)),
-    path('side_test/', include(side_test)),
+    path('egg_info/', include(egg_info)),
     path('eggpagetemp/', include(eggpagetemp)),
     path('eggtabletemp/', include(eggtabletemp)),
 ]

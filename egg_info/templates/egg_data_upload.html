@@ -1,0 +1,43 @@
+{% extends 'layouts/base.html' %}
+{% block title %} egg_data_upload {% endblock %} 
+{% load static %}
+{% comment %} css {% endcomment %}
+{% block stylesheets %}
+{% endblock stylesheets %}
+
+{% block content %}
+<html lang="ko">
+    <div class="py-4">
+        <div class="d-flex justify-content-between w-100 flex-wrap">
+            <div class="mb-3 mb-lg-0">
+                <h1 class="h4">생산량 등록</h1>
+                <p class="mb-0">각 동별로 생산된 전체계란, 정상란, 완전크랙, 파형크랙, 기실, 혈반 계란의 수를 등록합니다.</p>
+            </div>
+            <div>
+                <a href="{% url 'egg_info:egg_info' %}" class="btn btn-outline-gray-600 d-inline-flex align-items-center">
+                    정보페이지로
+                </a>
+            </div>
+        </div>
+    </div>
+<h5>날짜선택</h5> <!-- default 오늘 날짜가 들어가게 -->
+<h5>농가선택</h5>
+<h5>동선택</h5> 
+<h5>계란상태선택</h5>
+<h5>갯수입력</h5>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}
+
+{% comment %} js {% endcomment %}
+{% block javascripts %}{% endblock javascripts %}

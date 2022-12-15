@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'users',
     'main',
     'eggtemp',
-    'side_test',
+    'egg_info',
     'eggpagetemp',
     'eggtabletemp',
 ]
