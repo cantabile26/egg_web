@@ -6,6 +6,7 @@
 {% endblock stylesheets %}
 
 {% block content %}
+
 <html lang="ko">
     <div class="py-4">
         <div class="d-flex justify-content-between w-100 flex-wrap">
@@ -27,12 +28,31 @@
             <div class="card-body">
                     <!-- 산란 정보 본체 -->
                 <div class="row">
-                        <div class="col-sm-2 p-3 bg-success text-white">.col</div>
-                        <div class="col-sm-2 p-3 bg-primary text-white">.col</div>
-                        <div class="col-sm-2 p-3 bg-success text-white">.col</div>
-                        <div class="col-sm-2 p-3 bg-primary text-white">.col</div>
-                        <div class="col-sm-2 p-3 bg-success text-white">.col</div>
-                        <div class="col-sm-2 p-3 bg-primary text-white">.col</div>
+                        <div class="col-sm-2 p-3 bg-success text-white" align = "center">
+                            <div class = 
+                            <img src = "{% static 'image/illustrations/normal_egg.png' %}" rel="stylesheet">
+                            <span class = "h5">전체 계란</span>
+                        </div>
+                        <div class="col-sm-2 p-3 bg-primary text-white" align = "center">
+                            <img src = "{% static 'image/illustrations/normal_egg.png' %}" rel="stylesheet">
+                            <span class = "h5">정상란</span>
+                        </div>
+                        <div class="col-sm-2 p-3 bg-success text-white" align = "center">
+                            <img src = "{% static 'image/illustrations/normal_egg.png' %}" rel="stylesheet">
+                            <span class = "h5">완전 크랙</span>
+                        </div>
+                        <div class="col-sm-2 p-3 bg-primary text-white" align = "center">
+                            <img src = "{% static 'image/illustrations/normal_egg.png' %}" rel="stylesheet">
+                            <span class = "h5">파형 크랙</span>
+                        </div>
+                        <div class="col-sm-2 p-3 bg-success text-white" align = "center">
+                            <img src = "{% static 'image/illustrations/normal_egg.png' %}" rel="stylesheet">
+                            <span class = "h5">기실</span>
+                        </div>
+                        <div class="col-sm-2 p-3 bg-primary text-white" align = "center">
+                            <img src = "{% static 'image/illustrations/normal_egg.png' %}" rel="stylesheet">
+                            <span class = "h5">혈반</span>
+                        </div>
                 </div>
             </div>
         </div>
@@ -46,12 +66,12 @@
                         <thead class="thead-light">
                         <tr>
                             <th class="border-0 rounded-start">barn</th>
-                            <th class="border-0">total_egg</th>
-                            <th class="border-0">normal_egg</th>
-                            <th class="border-0">other_egg</th>
-                            <th class="border-0">crack_egg</th>
-                            <th class="border-0">blood_egg</th>
-                            <th class="border-0 rounded-end">Widgets Change</th>
+                            <th class="border-0">동별 생산량</th>
+                            <th class="border-0">정상란</th>
+                            <th class="border-0">완전크랙</th>
+                            <th class="border-0">파형크랙</th>
+                            <th class="border-0">기실</th>
+                            <th class="border-0 rounded-end">혈반</th>
                         </tr>
                         </thead>
                         <tbody>
