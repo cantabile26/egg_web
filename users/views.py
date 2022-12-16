@@ -1,10 +1,20 @@
-<<<<<<< HEAD
 from django.shortcuts import render, redirect
 from django.contrib import auth
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+
+from django.shortcuts import render
+from users.models import User
+from django.contrib.auth import authenticate, login, logout
+from egg.function import s2j1c1_encrypt, s2j1c1_decrypt 
+from .forms import LoginForm, SignUpForm
+from django.utils import timezone
+
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+
 
 '''
 def sign_in_table(request):
@@ -52,16 +62,10 @@ def sign_up_table(request):
   context['segment'] = load_template
   
   return render(request, "sign-up.html", context)
-=======
-from django.shortcuts import render
-from users.models import User
-from django.contrib.auth import authenticate, login, logout
-from egg.function import s2j1c1_encrypt, s2j1c1_decrypt 
-from .forms import LoginForm, SignUpForm
-from django.utils import timezone
 
-from django.http import HttpResponseRedirect
-from django.urls import reverse
+
+
+#----------------------------------------------------------------------
 
 # 로그인
 def login_view(request):
@@ -75,7 +79,7 @@ def login_view(request):
       password = form.cleaned_data.get("password")
       en_username = s2j1c1_encrypt(username)
       
-      user = authenticate(request, username=en_username, password=password)
+      user = authenticate(request, username=en_username, password=password)  
       print(user)
       if user is not None:
         login(request, user)
@@ -133,4 +137,3 @@ def user_register(request):
 def logoutAction(request):
   logout(request)
   return HttpResponseRedirect(reverse('users:loginPage'))
->>>>>>> master

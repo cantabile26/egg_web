@@ -1,0 +1,91 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} 경영관리 {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+
+
+<h1>Django 사용자 입력받기</h1>
+<h2>HTML Form 이용하기</h2>
+<hr>
+<form action="{% url 'eggtabletemp:createform' %}" method="POST">
+    {% csrf_token %}
+    <div>
+        <label for="farm_code">농장코드</label>
+        <input type="text" name="farm_code" id="farm_code">
+    </div>
+    <div>
+        <label for="barn_code">농가코드</label>
+        <input type="text" name="barn_code" id="barn_code">
+    </div>
+    <div>
+        <label for="회계코드">회계코드</label>
+        <input type="text" name="회계코드" id="회계코드">
+    </div>
+    <div>
+        <label for="계좌번호">계좌번호</label>
+        <input type="text" name="계좌번호" id="계좌번호">
+    </div>
+    <div>
+        <label for="출납일">출납일</label>
+        <input type="text" name="출납일" id="출납일">
+    </div>
+    <div>
+        <label for="발의일">발의일</label>
+        <input type="text" name="발의일" id="발의일">
+    </div>
+    <div>
+        <label for="결제일">결제일</label>
+        <input type="text" name="결제일" id="결제일">
+    </div>
+    <div>
+        <label for="등기일">등기일</label>
+        <input type="text" name="등기일" id="등기일">
+    </div>
+    <div>
+        <label for="결의구분">결의구분</label>
+        <input type="text" name="결의구분" id="결의구분">
+    </div>
+    <div>
+        <label for="계정과목">계정과목</label>
+        <input type="text" name="계정과목" id="계정과목">
+    </div>
+    <div>
+        <label for="적요">적요</label>
+        <input type="text" name="적요" id="적요">
+    </div>
+    <div>
+        <label for="수입">수입</label>
+        <input type="text" name="수입" id="수입">
+    </div>
+    <div>
+        <label for="지출">지출</label>
+        <input type="text" name="지출" id="지출">
+    </div>
+    <div>
+        <label for="자금원천">자금원천</label>
+        <input type="text" name="자금원천" id="자금원천">
+    </div>
+    <div>
+        <label for="정렬">정렬</label>
+        <input type="text" name="정렬" id="정렬">
+    </div>
+    <div>
+        <label for="비고">비고</label>
+        <input type="text" name="비고" id="비고">
+    </div>
+
+    
+    <br>
+    <input type="submit" value="제출">
+</form>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

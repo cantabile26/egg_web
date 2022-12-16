@@ -55,62 +55,33 @@
                     </thead>
                     <tbody>
                         <!-- Item -->
+                        {% for aa in account_ing %}
                         <tr>
                             <td>
                                 <a href="#" class="text-primary fw-bold">1</a> 
                             </td>
                             <td>
-                                -
+                                {{aa.farm_code}}
                             </td>
                             <td>
-                                --
+                                {{aa.barm_code}}
                             </td>
                             <td>
-                                - 
+                                {{aa.회계코드}}
                             </td>
                             <td>
-                                --
+                                {{aa.계좌번호}}
                             </td>
                             <td>
-                                -
+                                {{aa.출납일}}
                             </td>
                             <td>
-                                --
+                                {{aa.발의일}}
                             </td>
-                            <td>
-                                --
-                            </td>
-                            <td>
-                                --
-                            </td>
-                            <td>
-                                --
-                            </td>
-                            <td>
-                                --
-                            </td>
-                            <td>
-                                --
-                            </td>
-                            <td>
-                                --
-                            </td>
-                            <td>
-                                --
-                            </td>
-                            <td>
-                                --
-                            </td>
-                            <td>
-                                --
-                            </td>
-                            <td>
-                                --
-                            </td>
-                            <td>
-                                --ㅎㄹ
-                            </td>
+                            
                         </tr>
+
+                        {% endfor %}
                         <!-- End of Item -->
 
                         
@@ -123,7 +94,11 @@
     <div class="row">
     <div >
         <button class="btn btn-sm btn-primary mb-3 ms-3" type="button" style="float: right;"> 수 정 </button>
-        <button class="btn btn-sm btn-primary mb-3" type="button" style="float: right;"> 입 력 </button>
+
+        <a class="nav-link" href="{% url 'eggtabletemp:eggmanageinputTablesPage' %}">
+            <button class="btn btn-sm btn-primary mb-3" type="button" style="float: right;"> 입 력 </button>
+        </a>
+        
     </div>
 </div>
 
