@@ -38,7 +38,7 @@ SECRET_KEY = 'django-insecure-m!f%z=ds%$!246(fgk$pr-kln78vwe!^jct&&wsrrj)$5g=mf_
 DEBUG = True
 
 # Assets Management
-ASSETS_ROOT = os.getenv('ASSETS_ROOT', '/static/assets') 
+ASSETS_ROOT = os.getenv('ASSETS_ROOT', '/static/') 
 
 ALLOWED_HOSTS = []
 
