@@ -3,6 +3,7 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 from main import urls as main
+from users import urls as users
 from eggtemp import urls as eggtemp
 from egg_info import urls as egg_info
 from eggpagetemp import urls as eggpagetemp
@@ -11,6 +12,7 @@ from eggtabletemp import urls as eggtabletemp
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(main)),
+    path('users/', include(users)),
     path('eggtemp/', include(eggtemp)),
     path('egg_info/', include(egg_info)),
     path('eggpagetemp/', include(eggpagetemp)),
