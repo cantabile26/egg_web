@@ -10,8 +10,11 @@ from eggtabletemp import urls as eggtabletemp
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #main
     path('', include(main)),
+    #users - login, logout
     path('users/', include(users)),
+    #template 
     path('eggtemp/', include(eggtemp)),
     path('eggpagetemp/', include(eggpagetemp)),
     path('eggtabletemp/', include(eggtabletemp)),
