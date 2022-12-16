@@ -1,13 +1,5 @@
-from django.shortcuts import render, redirect
-from django.contrib import auth
-from django.contrib.auth import login, authenticate
-from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect
-from django.urls import reverse
-
-from django.shortcuts import render
-from users.models import User
-from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render, get_object_or_404
+from django.contrib.auth import authenticate, login, logout, get_user_model
 from egg.function import s2j1c1_encrypt, s2j1c1_decrypt 
 from .forms import LoginForm, SignUpForm
 from django.utils import timezone
@@ -137,3 +129,14 @@ def user_register(request):
 def logoutAction(request):
   logout(request)
   return HttpResponseRedirect(reverse('users:loginPage'))
+
+# 사용자 list - 관리자용
+def users_list_view(request):
+  context = {}
+  print(request.user)
+  getUserModel = get_user_model()
+  user = get_object_or_404(getUserModel, username=request.user)
+  print(user)
+  
+  
+  return render(request, 'user_list.html', context)
