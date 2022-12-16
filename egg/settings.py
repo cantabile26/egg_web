@@ -12,14 +12,24 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-print('base_dir', BASE_DIR)
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
+# 2. 각 호출자가 기본 매개변수를 전달할 필요가 없도록 환경 변수의 체계 기반 조회를 제공합니다.
+# 라고 번역하니 나와있는데, 무슨말인지 생각해보니 환경변수를 불러올 수 있는 상태로 세팅한다고
+# 이해했다. 
+
+env = environ.Env(DEBUG=(bool, True))
+
+# Take environment variables from .env file
+environ.Env.read_env(
+    env_file=os.path.join(BASE_DIR, '.env')
+)
+
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-m!f%z=ds%$!246(fgk$pr-kln78vwe!^jct&&wsrrj)$5g=mf_'
@@ -86,15 +96,16 @@ WSGI_APPLICATION = 'egg.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-if os.environ.get('DB_ENGINE') and os.environ.get('DB_ENGINE') == 'mysql':
+print(env('DB_ENGINE'))
+if env('DB_ENGINE') and env('DB_ENGINE') == 'mysql':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME'      : os.environ.get('DB_NAME'),
-            'USER'      : os.environ.get('DB_USERNAME'),
-            'PASSWORD'  : os.environ.get('DB_PASS'),
-            'HOST'      : os.environ.get('DB_HOST'),
-            'Port'      : os.environ.get('DB_PORT'),
+            'NAME'      : env('DB_NAME'),
+            'USER'      : env('DB_USERNAME'),
+            'PASSWORD'  : env('DB_PASS'),
+            'HOST'      : env('DB_HOST'),
+            'Port'      : env('DB_PORT'),
         }
     }
 else :  
