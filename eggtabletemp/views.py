@@ -15,3 +15,12 @@ def eggdetectTables(request):
   context['segment'] = load_template
 
   return render(request, "eggdetect-tables.html", context)
+
+
+def eggmanageTables(request):
+  context = {}
+
+  load_template = request.path.split('/')
+  context['segment'] = load_template
+
+  return render(request, "eggmanage-table.html", context)

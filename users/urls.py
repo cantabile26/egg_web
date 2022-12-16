@@ -4,6 +4,7 @@ from users import views
 app_name = 'users'
 
 urlpatterns = [
-    path('bootstrap-tables/', views.sign_in_table, name="sign_in_tablePage"),
-    path('users/', views.sign_up_table, name="sign_up_tablePage"),
+    path('singin/', views.sign_in_table, name="sign_in_tablePage"),
+    path('singup/', views.sign_up_table, name="sign_up_tablePage"),
+    # path('users/'. views.test, name="testPage"),
 ]

@@ -3,7 +3,6 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 from main import urls as main
-from users import urls as users
 from eggtemp import urls as eggtemp
 from eggpagetemp import urls as eggpagetemp
 from eggtabletemp import urls as eggtabletemp
@@ -16,7 +15,6 @@ urlpatterns = [
     path('eggtemp/', include(eggtemp)),
     path('eggpagetemp/', include(eggpagetemp)),
     path('eggtabletemp/', include(eggtabletemp)),
-    path('users/', include(users)),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
