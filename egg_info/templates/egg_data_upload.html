@@ -6,38 +6,87 @@
 {% endblock stylesheets %}
 
 {% block content %}
-<html lang="ko">
-    <div class="py-4">
-        <div class="d-flex justify-content-between w-100 flex-wrap">
-            <div class="mb-3 mb-lg-0">
-                <h1 class="h4">생산량 등록</h1>
-                <p class="mb-0">각 동별로 생산된 전체계란, 정상란, 완전크랙, 파형크랙, 기실, 혈반 계란의 수를 등록합니다.</p>
-            </div>
-            <div>
-                <a href="{% url 'egg_info:egg_info' %}" class="btn btn-outline-gray-600 d-inline-flex align-items-center">
-                    정보페이지로
-                </a>
+<div class="py-4">
+    <div class="d-flex justify-content-between w-100 flex-wrap">
+        <div class="mb-3 mb-lg-0">
+            <h1 class="h4">생산량 등록</h1>
+            <p class="mb-0">각 동별로 생산된 전체계란, 정상란, 완전크랙, 파형크랙, 기실, 혈반 계란의 수를 등록합니다.</p>
+        </div>
+        <div>
+            <a href="{% url 'egg_info:egg_info' %}" class="btn btn-outline-gray-600 d-inline-flex align-items-center">
+                정보페이지로
+            </a>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 mb-2">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-centered table-nowrap mb-0 rounded">
+                        <thead class="thead-light">
+                        <tr>
+                            <th class="border-0 rounded-start">농가선택</th>
+                            <th class="border-0">축사선택</th>
+                            <th class="border-0">날짜선택</th>
+                            <th class="border-0">계란상태선택</th>
+                            <th class="border-0 rounded-end">갯수입력</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border-0">                                             
+                                    11
+                                </td>
+                                <td class="border-0 fw-bold">
+                                    106
+                                </td>
+                                <td class="border-0 fw-bold">
+                                    106
+                                </td>
+                                <td class="border-0 fw-bold">
+                                    <div class="btn-group">
+                                        <form method="get" action="" class="form">
+                                            <select name="egg_type" id="id_egg_type">
+                                                <option selected="selected" disabled>계란 상태</option>
+                                                <option value="정상">정상</option>
+                                                <option value="완전크랙">완전크랙</option>
+                                                <option value="파형크랙">파형크랙</option>
+                                                <option value="기실">기실</option>
+                                                <option value="혈반">혈반</option>
+                                            </select>
+                                        </form>
+                                    </div>
+                                </td>
+                                <td class="border-0 fw-bold">
+                                    106
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-2" style="float:right;">
+                    <button class="btn btn-success" id="successAlert" type="submit">Success alert</button>
+                </div>
             </div>
         </div>
     </div>
-<h5>날짜선택</h5> <!-- default 오늘 날짜가 들어가게 -->
-<h5>농가선택</h5>
-<h5>동선택</h5> 
-<h5>계란상태선택</h5>
-<h5>갯수입력</h5>
-</html>
-
-
-
-
-
-
-
-
-
-
+</div>
 
 {% endblock content %}
 
 {% comment %} js {% endcomment %}
 {% block javascripts %}{% endblock javascripts %}
+
+{% comment %} <script>
+    $(document).ready(function() {
+        $( "select[name=egg_type]" ).val( "{{ egg_type }}" );
+        $('select[name=egg_type]').change(function () {
+        console.log($('select[name=egg_type]').val());
+        month = $('select[name=egg_type]').val();
+        $('.form').submit();
+    });
+});
+</script> {% endcomment %}
+

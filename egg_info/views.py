@@ -17,3 +17,10 @@ def egg_data_upload_view(request):
   context['segment'] = load_template
   
   return render(request, "egg_data_upload.html", context)
+
+def egg_info_db(request):
+  egg_type = request.GET.get('egg_type')
+  context = {
+            'egg_type': egg_type,
+        }
+  return render(request, 'egg_data_upload.html', context)
