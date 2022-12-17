@@ -18,7 +18,7 @@ class Egg_Info_Form(forms.Form):
       }
     ))
   egg_registration_date = forms.DateTimeField(
-    widget=forms.DateInput(
+    widget=forms.DateTimeInput(
         attrs={
         "class" : "form-control",
       }

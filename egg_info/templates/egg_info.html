@@ -6,7 +6,11 @@
 {% endblock stylesheets %}
 
 {% block content %}
-
+<script>
+    $.ajaxSetup({
+      headers: { "X-CSRFToken": '{{csrf_token}}' }
+    });
+</script>
 
 <div class="py-4">
     <div class="d-flex justify-content-between w-100 flex-wrap">
@@ -67,8 +71,9 @@
                     <table class="table table-centered table-nowrap mb-0 rounded">
                         <thead class="thead-light">
                         <tr>
-                            <th class="border-0 rounded-start">barn</th>
-                            <th class="border-0">동별 생산량</th>
+                            <th class="border-0 rounded-start">농가</th>
+                            <th class="border-0">축사</th>
+                            <th class="border-0">축사 총 생산량</th>
                             <th class="border-0">정상란</th>
                             <th class="border-0">완전크랙</th>
                             <th class="border-0">파형크랙</th>
@@ -77,46 +82,188 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {% for Egginfo in egg_modal_input %}
+                        {% comment %} {% for egg_modal_input in Egginfo  %} {% endcomment %}
                         <!-- Item -->
                         <tr>
+                            <!-- 농가 코드 -->
                             <td class="border-0">                                             
                                 <a href="#" class="d-flex align-items-center">
-                                    <div><span class="h6">{{ Egginfo.barn_code }}</span></div>
+                                    <div><span class="h6">준수 농장</span></div>
+                                </a>
+                            </td>
+                            <!-- 축사 코드 -->
+                            <td class="border-0">                                             
+                                <a href="#" class="d-flex align-items-center">
+                                    <div><span class="h6">장</span></div>
                                 </a>
                             </td>
                             <td class="border-0 fw-bold">
-
+                                100
                             </td>
                             <!-- 정상란 -->
                             {% comment %} {% if Egginfo.egg_type=="정상" %} {% endcomment %}
                             <td class="border-0 fw-bold">
-                                {{ Egginfo.egg_number }}
+                                50
                             </td>
                             <!-- 완전크랙 -->
                             {% comment %} {% else if [Egginfo.egg_type=="완전크랙"] %} {% endcomment %}
                             <td class="border-0 fw-bold">
-                                {{ Egginfo.egg_number }}
+                                30
                             </td>
                             <!-- 파형크랙 -->
                             {% comment %} {% else if [Egginfo.egg_type=="파형크랙"] %} {% endcomment %}
                             <td class="border-0 fw-bold">
-                                {{ Egginfo.egg_number }}
+                                10
                             </td>
                             <!-- 기실 -->
                             {% comment %} {% elseif [Egginfo.egg_type=="기실"] %} {% endcomment %}
                             <td class="border-0 fw-bold">
-                                {{ Egginfo.egg_number }}
+                                10
                             </td>
                             <!-- 혈반 -->
                             {% comment %} {% else %} {% endcomment %}
                             <td class="border-0 fw-bold">
-                                {{ Egginfo.egg_number }}
+                                10
                             </td>
                             {% comment %} {% endif %} {% endcomment %}
                         </tr>
                         <!-- End of Item -->
-                        {% endfor %}
+                        {% comment %} {% endfor %} {% endcomment %}
+
+                        <!-- Item -->
+                        <tr>
+                            <!-- 농가 코드 -->
+                            <td class="border-0">                                             
+                                <a href="#" class="d-flex align-items-center">
+                                    <div><span class="h6">승혁 농장</span></div>
+                                </a>
+                            </td>
+                            <!-- 축사 코드 -->
+                            <td class="border-0">                                             
+                                <a href="#" class="d-flex align-items-center">
+                                    <div><span class="h6">고</span></div>
+                                </a>
+                            </td>
+                            <!-- 정상란 -->
+                            <td class="border-0 fw-bold">
+                            </td>
+                            <!-- 완전크랙 -->
+                            <td class="border-0 fw-bold">
+                            </td>
+                            <td class="border-0 fw-bold">
+                            </td>
+                            <!-- 파형크랙 -->
+                            <td class="border-0 fw-bold">
+                            </td>
+                            <!-- 기실 -->
+                            <td class="border-0 fw-bold">
+                            </td>
+                            <!-- 혈반 -->
+                            <td class="border-0 fw-bold">
+                            </td>
+                        </tr>
+                        <!-- End of Item -->
+                        <!-- Item -->
+                        <tr>
+                            <!-- 농가 코드 -->
+                            <td class="border-0">                                             
+                                <a href="#" class="d-flex align-items-center">
+                                    <div><span class="h6">승혁 농장</span></div>
+                                </a>
+                            </td>
+                            <!-- 축사 코드 -->
+                            <td class="border-0">                                             
+                                <a href="#" class="d-flex align-items-center">
+                                    <div><span class="h6">왓</span></div>
+                                </a>
+                            </td>
+                            <!-- 정상란 -->
+                            <td class="border-0 fw-bold">
+                            </td>
+                            <!-- 완전크랙 -->
+                            <td class="border-0 fw-bold">
+                            </td>
+                            <td class="border-0 fw-bold">
+                            </td>
+                            <!-- 파형크랙 -->
+                            <td class="border-0 fw-bold">
+                            </td>
+                            <!-- 기실 -->
+                            <td class="border-0 fw-bold">
+                            </td>
+                            <!-- 혈반 -->
+                            <td class="border-0 fw-bold">
+                            </td>
+                        </tr>
+                        <!-- End of Item -->
+
+                        <!-- Item -->
+                        <tr>
+                            <!-- 농가 코드 -->
+                            <td class="border-0">                                             
+                                <a href="#" class="d-flex align-items-center">
+                                    <div><span class="h6">창혁 농장</span></div>
+                                </a>
+                            </td>
+                            <!-- 축사 코드 -->
+                            <td class="border-0">                                             
+                                <a href="#" class="d-flex align-items-center">
+                                    <div><span class="h6">더</span></div>
+                                </a>
+                            </td>
+                            <!-- 정상란 -->
+                            <td class="border-0 fw-bold">
+                            </td>
+                            <!-- 완전크랙 -->
+                            <td class="border-0 fw-bold">
+                            </td>
+                            <td class="border-0 fw-bold">
+                            </td>
+                            <!-- 파형크랙 -->
+                            <td class="border-0 fw-bold">
+                            </td>
+                            <!-- 기실 -->
+                            <td class="border-0 fw-bold">
+                            </td>
+                            <!-- 혈반 -->
+                            <td class="border-0 fw-bold">
+                            </td>
+                        </tr>
+                        <!-- End of Item -->
+
+                        <!-- Item -->
+                        <tr>
+                            <!-- 농가 코드 -->
+                            <td class="border-0">                                             
+                                <a href="#" class="d-flex align-items-center">
+                                    <div><span class="h6">성훈 농장</span></div>
+                                </a>
+                            </td>
+                            <!-- 축사 코드 -->
+                            <td class="border-0">                                             
+                                <a href="#" class="d-flex align-items-center">
+                                    <div><span class="h6">헬</span></div>
+                                </a>
+                            </td>
+                            <!-- 정상란 -->
+                            <td class="border-0 fw-bold">
+                            </td>
+                            <!-- 완전크랙 -->
+                            <td class="border-0 fw-bold">
+                            </td>
+                            <td class="border-0 fw-bold">
+                            </td>
+                            <!-- 파형크랙 -->
+                            <td class="border-0 fw-bold">
+                            </td>
+                            <!-- 기실 -->
+                            <td class="border-0 fw-bold">
+                            </td>
+                            <!-- 혈반 -->
+                            <td class="border-0 fw-bold">
+                            </td>
+                        </tr>
+                        <!-- End of Item -->
                         </tbody>
                     </table>
                     <div class="col-lg-2" style="float:right;">
@@ -140,6 +287,8 @@
                                     <div class="modal-header">
                                         <button type="button" class="btn-close btn-close-white text-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
+                                    <!-- input data form start -->
+                                    <form method="POST" action="" class="form">
                                     <div class="modal-body text-center py-3">
                                         <h3 class="modal-title mb-3">계란 생산량 등록</h3>
                                         <p class="mb-4 lead">모델에서 처리되는 데이터 이외에 데이터를 수기로 입력</p>
@@ -150,70 +299,65 @@
                                                     <div class="card border-0 shadow-sm">
                                                         <div class="card-body p-1">
                                                             <div class="table-responsive">
-                                                            <!-- input data form start -->
-                                                                <form method="post" action="" class="form">
-                                                                    <table class="table table-centered table-nowrap mb-0 rounded">
-                                                                        <thead class="thead-light">
-                                                                            <tr>
-                                                                                <th class="border-1 rounded-start">농가선택</th>
-                                                                                <th class="border-1">축사선택</th>
-                                                                                <th class="border-1">날짜선택</th>
-                                                                                <th class="border-1">계란상태선택</th>
-                                                                                <th class="border-1 rounded-end">갯수입력</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                <td class="border-0">                                             
-                                                                                    <div class="btn-group">
-                                                                                        <select name="farm_code" style="width:100px;height:30px;">
-                                                                                            <option selected="selected" disabled>농가 선택</option>
-                                                                                            <option value="승혁농장">승혁농장</option>
-                                                                                            <option value="준수농장">준수농장</option>
-                                                                                        </select>
+                                                                <table class="table table-centered table-nowrap mb-0 rounded">
+                                                                    <thead class="thead-light">
+                                                                        <tr>
+                                                                            <th class="border-1 rounded-start">농가선택</th>
+                                                                            <th class="border-1">축사선택</th>
+                                                                            <th class="border-1">날짜선택</th>
+                                                                            <th class="border-1">계란상태선택</th>
+                                                                            <th class="border-1 rounded-end">갯수입력</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td class="border-0">                                             
+                                                                                <div class="btn-group">
+                                                                                    <select name="farm_code" class="form-control" style="width:95px;height:42px;">
+                                                                                        <option selected="selected" disabled>농가 선택</option>
+                                                                                        <option value="승혁농장">승혁농장</option>
+                                                                                        <option value="준수농장">준수농장</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="border-0">
+                                                                                <div class="btn-group">
+                                                                                    <select name="barn_code" class="form-control" style="width:95px;height:42px;">
+                                                                                        <option selected="selected" disabled>축사 선택</option>
+                                                                                        <option value="일동">일동</option>
+                                                                                        <option value="이동">이동</option>
+                                                                                        <option value="삼동">삼동</option>
+                                                                                        <option value="사동">사동</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="border-0">
+                                                                                <div class="mb-3">
+                                                                                    <div class="input-group" style="width:140px;height:42px;">
+                                                                                        <input class="form-control" name="egg_registration_date" type="date" selected="selected" required>                                               
                                                                                     </div>
-                                                                                </td>
-                                                                                <td class="border-0">
-                                                                                    <div class="btn-group">
-                                                                                        <select name="barn_code" style="width:100px;height:30px;">
-                                                                                            <option selected="selected" disabled>축사 선택</option>
-                                                                                            <option value="일동">일동</option>
-                                                                                            <option value="이동">이동</option>
-                                                                                            <option value="삼동">삼동</option>
-                                                                                            <option value="사동">사동</option>
-                                                                                        </select>
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td class="border-0">
-                                                                                    <div class="mb-3">
-                                                                                        <div class="input-group" style="width:118px;height:30px;">
-                                                                                            <input data-datepicker="" class="form-control" name="egg_registration_date" type="text" placeholder="dd/mm/yyyy" required>                                               
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td class="border-0">
-                                                                                    <div class="btn-group">
-                                                                                        <select name="egg_type" style="width:100px;height:30px;">
-                                                                                            <option selected="selected" disabled>계란 상태</option>
-                                                                                            <option value="정상">정상</option>
-                                                                                            <option value="완전크랙">완전크랙</option>
-                                                                                            <option value="파형크랙">파형크랙</option>
-                                                                                            <option value="기실">기실</option>
-                                                                                            <option value="혈반">혈반</option>
-                                                                                        </select>
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td class="border-0">
-                                                                                    <div class="btn-group">
-                                                                                        <input type="number" min="0" name="egg_number" style="width:100px;height:30px;">
-                                                                                        
-                                                                                    </div>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
-                                                                </form>
-                                                                <!-- input data form end -->
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="border-0">
+                                                                                <div class="btn-group">
+                                                                                    <select name="egg_type" class="form-control" style="width:95px;height:42px;">
+                                                                                        <option selected="selected" disabled>계란 상태</option>
+                                                                                        <option value="정상">정상</option>
+                                                                                        <option value="완전크랙">완전크랙</option>
+                                                                                        <option value="파형크랙">파형크랙</option>
+                                                                                        <option value="기실">기실</option>
+                                                                                        <option value="혈반">혈반</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="border-0">
+                                                                                <div class="btn-group">
+                                                                                    <input type="number" min="0" class="form-control" name="egg_number" style="width:100px;height:42px;">
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -221,8 +365,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" name="egg_data_regist" class="ms-2 btn large-form-btn btn-info">Upload</button>
+                                    <button type="submit" name="egg_modal_input" class="ms-2 btn large-form-btn btn-info">Upload</button>
                                     <button type="button" class="ms-2 btn large-form-btn btn-warning" data-bs-dismiss="modal">Cancel</button>
+                                </form>
                                 </div>
                             </div>
                         </div>
