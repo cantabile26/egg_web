@@ -77,27 +77,46 @@
                         </tr>
                         </thead>
                         <tbody>
+                        {% for Egginfo in egg_modal_input %}
                         <!-- Item -->
                         <tr>
                             <td class="border-0">                                             
                                 <a href="#" class="d-flex align-items-center">
-                                    <div><span class="h6">일동</span></div>
+                                    <div><span class="h6">{{ Egginfo.barn_code }}</span></div>
                                 </a>
                             </td>
                             <td class="border-0 fw-bold">
+
                             </td>
+                            <!-- 정상란 -->
+                            {% comment %} {% if Egginfo.egg_type=="정상" %} {% endcomment %}
                             <td class="border-0 fw-bold">
+                                {{ Egginfo.egg_number }}
                             </td>
+                            <!-- 완전크랙 -->
+                            {% comment %} {% else if [Egginfo.egg_type=="완전크랙"] %} {% endcomment %}
                             <td class="border-0 fw-bold">
+                                {{ Egginfo.egg_number }}
                             </td>
+                            <!-- 파형크랙 -->
+                            {% comment %} {% else if [Egginfo.egg_type=="파형크랙"] %} {% endcomment %}
                             <td class="border-0 fw-bold">
+                                {{ Egginfo.egg_number }}
                             </td>
+                            <!-- 기실 -->
+                            {% comment %} {% elseif [Egginfo.egg_type=="기실"] %} {% endcomment %}
                             <td class="border-0 fw-bold">
+                                {{ Egginfo.egg_number }}
                             </td>
+                            <!-- 혈반 -->
+                            {% comment %} {% else %} {% endcomment %}
                             <td class="border-0 fw-bold">
+                                {{ Egginfo.egg_number }}
                             </td>
+                            {% comment %} {% endif %} {% endcomment %}
                         </tr>
                         <!-- End of Item -->
+                        {% endfor %}
                         </tbody>
                     </table>
                     <div class="col-lg-2" style="float:right;">
@@ -129,7 +148,7 @@
                                             <div class="row">
                                                 <div class="col-12 mb-2">
                                                     <div class="card border-0 shadow-sm">
-                                                        <div class="card-body">
+                                                        <div class="card-body p-1">
                                                             <div class="table-responsive">
                                                             <!-- input data form start -->
                                                                 <form method="post" action="" class="form">
@@ -147,7 +166,7 @@
                                                                             <tr>
                                                                                 <td class="border-0">                                             
                                                                                     <div class="btn-group">
-                                                                                        <select name="farm_code" id="id_farm_code">
+                                                                                        <select name="farm_code" style="width:100px;height:30px;">
                                                                                             <option selected="selected" disabled>농가 선택</option>
                                                                                             <option value="승혁농장">승혁농장</option>
                                                                                             <option value="준수농장">준수농장</option>
@@ -156,7 +175,7 @@
                                                                                 </td>
                                                                                 <td class="border-0">
                                                                                     <div class="btn-group">
-                                                                                        <select name="barn_code" id="id_barn_code">
+                                                                                        <select name="barn_code" style="width:100px;height:30px;">
                                                                                             <option selected="selected" disabled>축사 선택</option>
                                                                                             <option value="일동">일동</option>
                                                                                             <option value="이동">이동</option>
@@ -167,14 +186,14 @@
                                                                                 </td>
                                                                                 <td class="border-0">
                                                                                     <div class="mb-3">
-                                                                                        <div class="input-group-sm">
-                                                                                            <input data-datepicker="" class="form-control" name="egg_registration_date" id="id_egg_registration_date" type="text" placeholder="dd/mm/yyyy" required>                                               
+                                                                                        <div class="input-group" style="width:118px;height:30px;">
+                                                                                            <input data-datepicker="" class="form-control" name="egg_registration_date" type="text" placeholder="dd/mm/yyyy" required>                                               
                                                                                         </div>
                                                                                     </div>
                                                                                 </td>
                                                                                 <td class="border-0">
                                                                                     <div class="btn-group">
-                                                                                        <select name="egg_type" id="id_egg_type">
+                                                                                        <select name="egg_type" style="width:100px;height:30px;">
                                                                                             <option selected="selected" disabled>계란 상태</option>
                                                                                             <option value="정상">정상</option>
                                                                                             <option value="완전크랙">완전크랙</option>
@@ -185,8 +204,9 @@
                                                                                     </div>
                                                                                 </td>
                                                                                 <td class="border-0">
-                                                                                    <div class="btn-sm">
-                                                                                        <input type="number" min="0" name="egg_number">
+                                                                                    <div class="btn-group">
+                                                                                        <input type="number" min="0" name="egg_number" style="width:100px;height:30px;">
+                                                                                        
                                                                                     </div>
                                                                                 </td>
                                                                             </tr>
@@ -201,7 +221,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" class="ms-2 btn large-form-btn btn-info">Upload</button>
+                                    <button type="submit" name="egg_data_regist" class="ms-2 btn large-form-btn btn-info">Upload</button>
                                     <button type="button" class="ms-2 btn large-form-btn btn-warning" data-bs-dismiss="modal">Cancel</button>
                                 </div>
                             </div>
