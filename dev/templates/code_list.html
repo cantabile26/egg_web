@@ -1,0 +1,165 @@
+{% extends 'layouts/base.html' %}
+{% block title %} 계란선별-코드관리 {% endblock %} 
+{% load static %}
+{% comment %} css {% endcomment %}
+{% block stylesheets %}
+{% endblock stylesheets %}
+
+{% block content %}
+<div id="code_up_insert_modal" class="modal fade">
+  <div id="code_up_insert_dialog" class="modal-dialog" hx-target="this"></div>
+</div>
+<!-- Modal Content -->
+
+<div class="modal fade" id="insertModal">
+  <div class="modal-dialog modal-dialog-centered" role="document" id="insertModalDialog" hx-target="this">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="h6 modal-title">상위코드 추가</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-0">
+        <div id="insertModal-body"> 
+        </div>
+      </div>
+    </div>
+  </div> 
+</div>
+<!-- end Modal Content -->
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+  <div class="d-block mb-4 mb-md-0">
+      <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
+          <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
+              <li class="breadcrumb-item">
+                  <a href="/">
+                    <svg class="icon icon-xxs" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                  </a>
+              </li>
+              <li class="breadcrumb-item">세팅</li>
+              <li class="breadcrumb-item active" aria-current="page"><a href="">코드관리</a></li>
+          </ol>
+      </nav>
+      <h2 class="h4">코드관리</h2>
+      <p class="mb-0"></p>
+  </div>
+  <div class="btn-toolbar mb-2 mb-md-0">
+      
+  </div>
+</div>
+
+<div class="row" style="height:65vh">
+  <div class="col-12 col-lg-5">
+    <div class="card border-0 shadow">
+      <div class="card-header border-gray-100 d-flex justify-content-between align-items-center">
+        <h2 class="h4 mb-0">상위코드</h2>
+        {% comment %} <button type="button" id="code_up_insert_btn" data-url={% url 'dev:codeUpInsertPage' %} class="btn btn-sm btn-pill btn-outline-info" data-bs-toggle="modal" data-bs-target="#insertModal">+상위코드등록</button> {% endcomment %}
+        {% comment %} <button type="button" id="code_up_insert_btn" hx-get="{% url 'dev:codeUpInsertPage' %}" hx-target="#insertModalDialog">+상위코드등록</button> {% endcomment %}
+        <button class="btn btn-sm btn-pill btn-outline-info" hx-get="{% url 'dev:codeUpInsertPage' %}" hx-target="#code_up_insert_dialog">+상위코드등록</button>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-centered table-nowrap mb-0 rounded">
+            <thead class="thead-light">
+              <tr>
+                <th class="border-0 rounded-start">상위코드</th>
+                <th class="border-0">상위코드명</th>
+                <th class="border-0">상위코드설명</th>
+                <th class="border-0">상위코드상태</th>
+                <th class="border-0 rounded-end">하위코드</th>
+              </tr>
+            </thead>
+            <tbody>
+            {%for up in code_up%}
+              <tr>
+                <td class="text-center">
+                  <a class="text-info fw-bold">{{up.code_up}}</a>
+                </td>
+                <td class="text-center">
+                  <a class="text-info fw-bold">{{up.code_up_name}}</a>
+                </td>
+                <td class="text-center">
+                  {%if up.code_up_info != "" and up.code_up_info%}
+                    <span
+                      data-bs-toggle="tooltip" data-bs-placement="top"
+                      data-bs-title="{{up.code_up_info}}">
+                      <i class="fa-solid fa-circle-info"></i>
+                    </span>
+                  {%else%}
+                    <span>
+                      <i class="fa-regular fa-circle-info"></i>
+                    </span>
+                  {%endif%}
+                </td>
+                <td class="text-center">
+                  {%if up.code_up_status == "show"%}
+                    <span
+                    data-bs-toggle="tooltip" data-bs-placement="top"
+                    data-bs-title="사용가능">
+                      <i class="fa-solid fa-eye"></i>
+                    </span>
+                  {%elif up.code_up_status == "hide"%}
+                    <span
+                    data-bs-toggle="tooltip" data-bs-placement="top"
+                    data-bs-title="숨김상태">
+                      <i class="fa-solid fa-eye-slash"></i>
+                    </span>
+                  {%endif%}
+                </td>
+                <td>
+                  <a type="button" class="text-tertiary me-3 d-inline-flex align-items-center">
+                    하위코드
+                    &nbsp;<i class="fa-solid fa-chevron-right"></i>
+                  </a>
+                </td>
+              </tr>
+              {% empty %}
+              <div class="text-center">
+                <small class="text-uppercase text-muted">등록된 내용이 없습니다.</small>
+              </div>
+            {% endfor%}  
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  {% comment %} $("#code_up_insert_btn").on("click", function(){
+    $.ajax({
+      url:$(this).attr("data-url"),
+      success: function(data){
+        $('#insertModal').modal('show');
+        $("#insertModal-body").html(data);
+      }
+    })
+  }) {% endcomment %}
+  window.onload=function(){
+    //실행할 내용
+    const modal = new bootstrap.Modal(document.getElementById("code_up_insert_modal"))
+    console.log(1111)
+    htmx.on("htmx:afterSwap", (e) => {
+      console.log("1111")
+      // Response targeting #dialog => show the modal
+      if (e.detail.target.id == "code_up_insert_dialog") {
+        modal.show()
+      }
+    })
+    htmx.on("htmx:beforeSwap", (e) => {
+      // Empty response targeting #dialog => hide the modal
+      if (e.detail.target.id == "code_up_insert_dialog" && !e.detail.xhr.response) {
+        modal.hide()
+        e.detail.shouldSwap = false
+      }
+    })
+    htmx.on("hidden.bs.modal", () => {
+      document.getElementById("code_up_insert_dialog").innerHTML = ""
+    })
+  }
+  
+</script>
+
+{% endblock content %}
+
+{% comment %} js {% endcomment %}
+{% block javascripts %}{% endblock javascripts %}

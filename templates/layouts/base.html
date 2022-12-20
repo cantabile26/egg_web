@@ -51,11 +51,13 @@
 
 <!-- font awesome -->
 <script src="https://kit.fontawesome.com/9e33089110.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<!-- htmx-->
+<script src="{% static 'js/htmx.min.js' %}" defer></script>
+<!-- Css load  -->    
+{% block stylesheets %}
 
-  <!-- Css load  -->    
-  {% block stylesheets %}
-  
-  {% endblock stylesheets %}
+{% endblock stylesheets %}
 
 </head>
 <body>

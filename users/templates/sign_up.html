@@ -40,9 +40,6 @@
 
                             <form method="post" action="." class="mt-4">
                                 {% csrf_token %}
-                                {% comment %} 
-                                아이디
-                                {% endcomment %}
                                 <div class="form-group mb-4">
                                     <label for="username">Your ID</label>
                                     <div class="input-group">
@@ -53,9 +50,6 @@
                                     </div>  
                                     <span class="text-danger">{{ form.username.errors }}</span>
                                 </div>
-                                {% comment %} 
-                                사용자 이름
-                                {% endcomment %}
                                 <div class="form-group mb-4">
                                 <label for="nickname">Your Name</label>
                                 <div class="input-group">

@@ -5,5 +5,6 @@ app_name = "eggtabletemp"
 
 urlpatterns = [
   path('bootstrap-tables/', views.bootstrapTables, name="bootstrapTablesPage"),
+  path('transactions/', views.transactionPage, name="transactionPage")
 ]
 
