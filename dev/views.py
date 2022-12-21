@@ -46,6 +46,12 @@ def code_view(request):
   
   return render(request, "code_list.html", context)
 
+def code_up_list(request):
+  # context
+  context = {}
+  context['code_up'] = get_code_up_list()
+  
+  return render(request, "code_up_list.html", context)
 
 def code_up_add(request):
   msg = None
@@ -71,7 +77,7 @@ def code_up_add(request):
       
       msg = "등록이 완료되었습니다."
       success = True
-      return HttpResponse(status=204)
+      return HttpResponse(status=204, headers={'HX-Trigger':'codeUpListChanged'})
   else:
     form = CodeInsertForm()
   

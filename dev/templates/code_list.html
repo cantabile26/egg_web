@@ -6,26 +6,13 @@
 {% endblock stylesheets %}
 
 {% block content %}
+<!-- 상위코드 등록 Modal Content -->
 <div id="code_up_insert_modal" class="modal fade">
   <div id="code_up_insert_dialog" class="modal-dialog" hx-target="this"></div>
 </div>
-<!-- Modal Content -->
+<!--end Modal Content -->
 
-<div class="modal fade" id="insertModal">
-  <div class="modal-dialog modal-dialog-centered" role="document" id="insertModalDialog" hx-target="this">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="h6 modal-title">상위코드 추가</h2>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body p-0">
-        <div id="insertModal-body"> 
-        </div>
-      </div>
-    </div>
-  </div> 
-</div>
-<!-- end Modal Content -->
+
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
   <div class="d-block mb-4 mb-md-0">
       <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
@@ -68,55 +55,7 @@
                 <th class="border-0 rounded-end">하위코드</th>
               </tr>
             </thead>
-            <tbody>
-            {%for up in code_up%}
-              <tr>
-                <td class="text-center">
-                  <a class="text-info fw-bold">{{up.code_up}}</a>
-                </td>
-                <td class="text-center">
-                  <a class="text-info fw-bold">{{up.code_up_name}}</a>
-                </td>
-                <td class="text-center">
-                  {%if up.code_up_info != "" and up.code_up_info%}
-                    <span
-                      data-bs-toggle="tooltip" data-bs-placement="top"
-                      data-bs-title="{{up.code_up_info}}">
-                      <i class="fa-solid fa-circle-info"></i>
-                    </span>
-                  {%else%}
-                    <span>
-                      <i class="fa-regular fa-circle-info"></i>
-                    </span>
-                  {%endif%}
-                </td>
-                <td class="text-center">
-                  {%if up.code_up_status == "show"%}
-                    <span
-                    data-bs-toggle="tooltip" data-bs-placement="top"
-                    data-bs-title="사용가능">
-                      <i class="fa-solid fa-eye"></i>
-                    </span>
-                  {%elif up.code_up_status == "hide"%}
-                    <span
-                    data-bs-toggle="tooltip" data-bs-placement="top"
-                    data-bs-title="숨김상태">
-                      <i class="fa-solid fa-eye-slash"></i>
-                    </span>
-                  {%endif%}
-                </td>
-                <td>
-                  <a type="button" class="text-tertiary me-3 d-inline-flex align-items-center">
-                    하위코드
-                    &nbsp;<i class="fa-solid fa-chevron-right"></i>
-                  </a>
-                </td>
-              </tr>
-              {% empty %}
-              <div class="text-center">
-                <small class="text-uppercase text-muted">등록된 내용이 없습니다.</small>
-              </div>
-            {% endfor%}  
+            <tbody hx-trigger="load, codeUpListChanged from:body" hx-get="{% url 'dev:codeUpList' %}" hx-target="this">
             </tbody>
           </table>
         </div>
@@ -136,19 +75,19 @@
   }) {% endcomment %}
   window.onload=function(){
     //실행할 내용
-    const modal = new bootstrap.Modal(document.getElementById("code_up_insert_modal"))
+    const code_up_inster_modal = new bootstrap.Modal(document.getElementById("code_up_insert_modal"))
     console.log(1111)
     htmx.on("htmx:afterSwap", (e) => {
       console.log("1111")
       // Response targeting #dialog => show the modal
       if (e.detail.target.id == "code_up_insert_dialog") {
-        modal.show()
+        code_up_inster_modal.show()
       }
     })
     htmx.on("htmx:beforeSwap", (e) => {
       // Empty response targeting #dialog => hide the modal
       if (e.detail.target.id == "code_up_insert_dialog" && !e.detail.xhr.response) {
-        modal.hide()
+        code_up_inster_modal.hide()
         e.detail.shouldSwap = false
       }
     })
