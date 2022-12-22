@@ -52,7 +52,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #django_htmx
+    'django_htmx',
+    # apps
     'users',
+    'dev',
     'main',
     'eggtemp',
     'egg_info',
@@ -70,6 +74,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_htmx.middleware.HtmxMiddleware',
 ]
 
 ROOT_URLCONF = 'egg.urls'
@@ -96,7 +101,7 @@ WSGI_APPLICATION = 'egg.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-print(env('DB_ENGINE'))
+
 if env('DB_ENGINE') and env('DB_ENGINE') == 'mysql':
     DATABASES = {
         'default': {
