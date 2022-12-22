@@ -11,7 +11,6 @@ class Egg_Info_Form(forms.Form):
         'placeholder':'Farm_code',
       }
     ))
-  
   barn_code = forms.CharField(
     widget=forms.TextInput(
         attrs={

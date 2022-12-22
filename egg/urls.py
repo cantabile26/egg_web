@@ -9,6 +9,7 @@ from eggtemp import urls as eggtemp
 from egg_info import urls as egg_info
 from eggpagetemp import urls as eggpagetemp
 from eggtabletemp import urls as eggtabletemp
+from farm_management import urls as farm_management
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,6 +24,7 @@ urlpatterns = [
     path('egg_info/', include(egg_info)),
     path('eggpagetemp/', include(eggpagetemp)),
     path('eggtabletemp/', include(eggtabletemp)),
+    path('farm_management/', include(farm_management))
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)

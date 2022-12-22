@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'egg_info',
     'eggpagetemp',
     'eggtabletemp',
+    'farm_management'
 ]
 
 AUTH_USER_MODEL = 'users.User'
