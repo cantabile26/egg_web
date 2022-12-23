@@ -36,7 +36,7 @@ class FarmRegisterForm(forms.Form):
         )
     )
     farm_addr1 = forms.CharField(
-        widget=forms.CharField(
+        widget=forms.TextInput(
             attrs={
                 "placeholder": "주소",
                 "class": "form-control"
@@ -44,7 +44,7 @@ class FarmRegisterForm(forms.Form):
         )
     )
     farm_addr2 = forms.CharField(
-        widget=forms.CharField(
+        widget=forms.TextInput(
             attrs={
                 "placeholder": "상세주소",
                 "class": "form-control"
@@ -52,7 +52,7 @@ class FarmRegisterForm(forms.Form):
         )
     )
     farm_tel_num = forms.CharField(
-        widget=forms.CharField(
+        widget=forms.TextInput(
             attrs={
                 "placeholder": "연락처",
                 "class": "form-control"
@@ -60,7 +60,7 @@ class FarmRegisterForm(forms.Form):
         )
     )
     farm_status = forms.CharField(
-        widget=forms.CharField(
+        widget=forms.TextInput(
             attrs={
                 "placeholder": "농가상태",
                 "class": "form-control"
