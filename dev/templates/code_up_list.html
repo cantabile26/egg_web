@@ -1,7 +1,9 @@
 {%for up in code_up%}
   <tr>
     <td class="text-center">
-      <a class="text-info fw-bold">{{up.code_up}}</a>
+      <a class="text-info fw-bold" hx-get="{% url 'dev:codeUpdatePage' up.code_up%}" hx-target="#code_up_update_dialog">
+        {{up.code_up}}
+      </a>
     </td>
     <td class="text-center">
       <a class="text-info fw-bold">{{up.code_up_name}}</a>
@@ -35,7 +37,7 @@
       {%endif%}
     </td>
     <td>
-      <a type="button" class="text-tertiary me-3 d-inline-flex align-items-center">
+      <a type="button" class="text-tertiary me-3 d-inline-flex align-items-center" hx-get="{% url 'dev:codeDownList' up.code_up%}" hx-target="#codeDownSwap" hx-swap="innerHTML">
         하위코드
         &nbsp;<i class="fa-solid fa-chevron-right"></i>
       </a>
