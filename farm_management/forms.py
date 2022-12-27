@@ -2,7 +2,8 @@ from django import forms
 # from django.contrib.auth.models import User
 from farm_management.models import Farm_Management
 
-class FarmRegisterForm(forms.Form):
+# farm 등록 form
+class FarmInsertForm(forms.ModelForm):
     farm_name = forms.CharField(
         widget=forms.TextInput(
             attrs={
@@ -54,7 +55,7 @@ class FarmRegisterForm(forms.Form):
     farm_tel_num = forms.CharField(
         widget=forms.TextInput(
             attrs={
-                "placeholder": "연락처",
+                "placeholder": "-빼고 입력해주세요",
                 "class": "form-control"
             }
         )
@@ -68,18 +69,46 @@ class FarmRegisterForm(forms.Form):
         )
     )
 
-    def clean(self):
-        cleaned_data = super().clean()
-        farm_name = cleaned_data.get('farm_name')
-        try:
-            company_num = Farm_Management.objects.get(farm_name=farm_name)
-        except Farm_Management.DoesNotExist:
-            company_num = None
-        print(company_num)
-        if company_num:
-            self.add_error('company_num', '이미 등록된 사업자번호입니다')
-
-
     class Meta:
         model = Farm_Management
         fields = ('farm_name', 'company_num', 'farm_owner', 'farm_postcode', 'farm_addr1', 'farm_addr2', 'farm_tel_num', 'farm_status')
+
+
+# barn 등록 form
+class barnInsertForm(forms.ModelForm):
+    barn_name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder":"축사명",
+                "class" : "form-control"
+            }
+        )
+    )
+    barn_info_scale = forms.CharField(
+        widget = forms.TextInput(
+        attrs={
+                "placeholder":"축사규모",
+                "class":"form-control"
+            }
+        )
+    )
+    barn_info_volumn = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "축사용량",
+                "class": "form-control"
+            }
+        )
+    )
+    barn_info_bigo = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "축사설명",
+                "class": "form-control"
+            }
+        )
+    )
+
+    class Meta:
+        model = Farm_Management
+        fields = ('barn_name', 'barn_info_scale', 'barn_info_volumn', 'barn_info_bigo')

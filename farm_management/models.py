@@ -11,3 +11,16 @@ class Farm_Management(models.Model):
     farm_addr2 = models.CharField("상세주소", max_length=500, null=True)
     farm_tel_num = models.CharField("연락처", max_length=100, null=True)
     farm_status = models.CharField("농가상태", max_length=10, null=False)
+
+    def save(self, *args, **kwargs):
+        super(Farm_Management, self).save(*args, **kwargs)
+
+
+class Barn_Managemnet(models.Model):
+    barn_name = models.CharField("축사이름", max_length=50, null=False)
+    barn_info_scale = models.CharField("축사규모", max_length=50, null=False)
+    barn_info_volumn = models.CharField("축사용량", max_length=50, null=False)
+    barn_info_bigo = models.CharField("축사설명", max_length=50, null=False)
+
+    def save(self, *args, **kwargs):
+        super(Barn_Managemnet, self).save(*args, **kwargs)
