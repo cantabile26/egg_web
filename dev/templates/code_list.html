@@ -1,15 +1,13 @@
 {% extends 'layouts/base.html' %}
 {% block title %} 계란선별-코드관리 {% endblock %} 
 {% load static %}
-{% comment %} css {% endcomment %}
 
+<!-- css-->
 {% block stylesheets %}{% endblock stylesheets %}
 
 
 {% block content %}
-<!-- alert -->
 
-<!-- alert-->
 <!-- 상위코드 Modal Content -->
 <!-- 상위코드 등록 모달-->
 <div id="code_up_insert_modal" class="modal fade">
@@ -49,8 +47,6 @@
     <div class="card border-0 shadow">
       <div class="card-header border-gray-100 d-flex justify-content-between align-items-center">
         <h2 class="h4 mb-0">상위코드</h2>
-        {% comment %} <button type="button" id="code_up_insert_btn" data-url={% url 'dev:codeUpInsertPage' %} class="btn btn-sm btn-pill btn-outline-info" data-bs-toggle="modal" data-bs-target="#insertModal">+상위코드등록</button> {% endcomment %}
-        {% comment %} <button type="button" id="code_up_insert_btn" hx-get="{% url 'dev:codeUpInsertPage' %}" hx-target="#insertModalDialog">+상위코드등록</button> {% endcomment %}
         <button class="btn btn-sm btn-pill btn-outline-info" hx-get="{% url 'dev:codeUpInsertPage' %}" hx-target="#code_up_insert_dialog">+상위코드등록</button>
       </div>
       <div class="card-body">
@@ -104,46 +100,10 @@
     </div>
   </div>
 </div>
-<script>
-  window.onload=function(){
-    //실행할 내용
-    const code_up_insert_modal = new bootstrap.Modal(document.getElementById("code_up_insert_modal"))
-    const code_up_update_modal = new bootstrap.Modal(document.getElementById("code_up_update_modal"))
-    
-    htmx.on("htmx:afterSwap", (e) => { 
-      // Response targeting #dialog => show the modal     
-      // code_up_insert
-      if (e.detail.target.id == "code_up_insert_dialog") {
-        code_up_insert_modal.show()
-      }
-      // code_up_update
-      if (e.detail.target.id == "code_up_update_dialog"){
-        console.log(e.detail.xhr.response)
-        code_up_update_modal.show()
-      }
-    })
-
-    htmx.on("htmx:beforeSwap", (e) => {
-      // Empty response targeting #dialog => hide the modal
-      //code_up_insert
-      if (e.detail.target.id == "code_up_insert_dialog" && !e.detail.xhr.response) {
-        console.log(e.detail.xhr.response)
-        code_up_insert_modal.hide()
-        e.detail.shouldSwap = false
-      }
-      // code_up_update
-      if (e.detail.target.id == "code_up_update_dialog" && !e.detail.xhr.response) {
-        code_up_update_modal.hide()
-        e.detail.shouldSwap = false
-      }
-    })
-  }
-  {% comment %} htmx.on("hidden.bs.modal", () => {
-    document.getElementById("code_up_insert_dialog").innerHTML = ""
-  }) {% endcomment %}
-</script>
 
 {% endblock content %}
 
-{% comment %} js {% endcomment %}
-{% block javascripts %}{% endblock javascripts %}
+<!-- js-->
+{% block javascripts %}
+<script src="{% static 'js/dev/code_list.js' %}"></script>
+{% endblock javascripts %}

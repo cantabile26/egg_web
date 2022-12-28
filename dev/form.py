@@ -1,6 +1,7 @@
 from django import forms
 from dev.models import CodeUp
 
+# 상위코드 - insert form
 class CodeInsertForm(forms.ModelForm):
   code_up = forms.IntegerField(
     required=True,
@@ -21,6 +22,7 @@ class CodeInsertForm(forms.ModelForm):
     ))
   
   code_up_info = forms.CharField(
+    required=False,
     widget=forms.Textarea(
       attrs={
         "required":True,
@@ -48,16 +50,11 @@ class CodeInsertForm(forms.ModelForm):
     fields = ('code_up', 'code_up_name', 'code_up_info')
     
 
-
+# 상위코드 - update form
 class CodeUdateForm(forms.ModelForm):
   code_up = forms.IntegerField(
-    required=True,
-    widget=forms.NumberInput(
-      attrs={
-        "placeholder" : "상위코드",
-        "class" : "form-control"
-      }
-    ))
+    widget=forms.HiddenInput(),
+    )
   code_up_name = forms.CharField(
     max_length=100,
     widget=forms.TextInput(
@@ -68,16 +65,15 @@ class CodeUdateForm(forms.ModelForm):
     ))
   
   code_up_info = forms.CharField(
+    required=False,
     widget=forms.Textarea(
       attrs={
-        "required":True,
         "placeholder":"상위코드 설명",
         "class" : "form-control"
       }
     )
   )
-  code_up_status = forms.CharField()
   
   class Meta:
     model = CodeUp
-    fields = ['code_up', 'code_up_name', 'code_up_info', 'code_up_status']
+    fields = ('code_up', 'code_up_name', 'code_up_info', 'code_up_status')

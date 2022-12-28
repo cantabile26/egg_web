@@ -57,7 +57,7 @@ def view_code_up_list(request):
   context['code_up'] = get_code_up_list()
   
   return render(request, "code_up_list.html", context)
-
+# 상위코드 추가
 def code_up_add(request):
   msg = None
   success = False
@@ -95,30 +95,38 @@ def code_up_update(request, code_up_code):
   error_type = None
   msg = None
   success = False
-  
   context = {}
   
   if len(get_code_up_list(code_up_code)) == 0:
     error_type = 'error01'
     msg = "잘못된 접근입니다."
+    code_up_data = None
+    form=None
   else:
     code_up_data = get_code_up_list(code_up_code)[0]
-    form = CodeUdateForm(request.POST or None, instance=code_up_data)
-    print(form)
-    if request.method == 'POST':
-      msg = "등록이 완료되었습니다."
-      success = True
-      print('ttt', form.is_valid())
-      if form.is_valid():
-        print("111111", form)
-        new_commit = form.save(commit=False)
-        # print(new_commit.code_up_name)
-        return HttpResponse(status=204, headers={'HX-Trigger':'codeUpListChanged'})
-        
+    
+  if request.method == 'POST':
+    form = CodeUdateForm(request.POST, instance=code_up_data)
+    msg = "등록이 완료되었습니다."
+    success = True
+    
+    if form.is_valid():
+      new_commit = form.save(commit=False)
+      new_commit.update_id = request.user.username
+      new_commit.save()
+      
+      return HttpResponse(status=204, headers={'HX-Trigger':'codeUpListChanged'})
+  else:
+    if code_up_data :
+      form = CodeUdateForm(instance=code_up_data)
+    else:
+      form = None
+  
   context['error_type'] = error_type
   context['msg'] = msg
   context['success'] = success
   context['form'] = form
+  context['code_up_data'] = code_up_data
   
   return render(request, "code_up_update.html", context)
   
