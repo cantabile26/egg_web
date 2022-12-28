@@ -1,15 +1,22 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import get_user_model
 from .forms import FarmInsertForm, barnInsertForm
 from django.http import HttpResponse 
 from .models import Farm_Management, Barn_Management
 
 # Create your views here.
 
+@login_required(login_url="/users/")
 def farm_management_view(request):
     context = {}
     
     load_template = request.path.split('/')
     context['segment'] = load_template
+
+    getUser = get_user_model()
+    user = get_object_or_404(getUser, username=request.user)
+
 
     return render(request, "farm_management.html", context)
 
