@@ -14,7 +14,7 @@ class CodeUp(models.Model):
   class Meta:
     verbose_name = "Code Up"
     verbose_name_plural = "Code Up"
-    ordering = ['-code_up']
+    ordering = ['code_up']
   
   def save(self, *args, **kwargs):
     if not self.code_up:

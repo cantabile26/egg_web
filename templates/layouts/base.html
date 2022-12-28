@@ -54,6 +54,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <!-- htmx-->
 <script src="{% static 'js/htmx.min.js' %}" defer></script>
+
 <!-- Css load  -->    
 {% block stylesheets %}
 
@@ -64,9 +65,8 @@
     {% include 'includes/sidebar.html' %}
     <main class="content">
       {% include 'includes/navigation.html' %}
-      {% block content %}
       
-      {% endblock content %}
+      {% block content %}{% endblock content %}
       {% comment %} {% include 'includes/settings-box.html' %} {% endcomment %}
       {% include 'includes/footer.html' %}
     </main>
