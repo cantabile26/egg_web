@@ -57,6 +57,8 @@
                             <td colspan='5'></td>
                         </tr>
                     </thead>
+                    <tbody hx-trigger="load, farmListPageChanged from:body" hx-get="{% url 'farm_management:farmListPage' %}" hx-target="this">
+                    </tbody>
                 </table>
             </div>
     </div>
@@ -77,11 +79,10 @@
             <table class="table table-centered table-nowrap mb-0 rounded">
                 <thead class="thead-light">
                     <tr>
-                        <th class="border-0 rounded-start">축사코드</th>
-                        <th class="border-0">축사 별칭</th>
-                        <th class="border-0">축사 규모</th>
-                        <th class="border-0">축사 용량</th>
-                        <th class="border-0 rounded-end">축사설명</th>
+                        <th class="border-0 rounded-start" style="text-align:center">축사 별칭</th>
+                        <th class="border-0" style="text-align:center">축사 규모</th>
+                        <th class="border-0" style="text-align:center">축사 용량</th>
+                        <th class="border-0 rounded-end" style="text-align:center">축사 설명</th>
                     </tr>
                 </thead>
                 <tbody hx-trigger="load, barnListPageChanged from:body" hx-get="{% url 'farm_management:barnListPage' %}" hx-target="this">
@@ -117,10 +118,7 @@
         htmx.on("hidden.bs.modal", () => {
             document.getElementById("farm_insert_dialog").innerHTML = ""
         })
-    }
 
-    window.onload=function(){
-        //실행할 내용
         const barn_inster_modal = new bootstrap.Modal(document.getElementById("barn_insert_modal"))
         console.log(1111)
         htmx.on("htmx:afterSwap", (e) => {
@@ -141,5 +139,6 @@
             document.getElementById("barn_insert_dialog").innerHTML = ""
         })
     }
+
 </script>
 {% endblock javascripts %}

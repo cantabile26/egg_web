@@ -1,6 +1,6 @@
 from django import forms
 # from django.contrib.auth.models import User
-from farm_management.models import Farm_Management
+from farm_management.models import Farm_Management, Barn_Management
 
 # farm 등록 form
 class FarmInsertForm(forms.ModelForm):
@@ -60,18 +60,9 @@ class FarmInsertForm(forms.ModelForm):
             }
         )
     )
-    farm_status = forms.CharField(
-        widget=forms.TextInput(
-            attrs={
-                "placeholder": "농가상태",
-                "class": "form-control"
-            }
-        )
-    )
-
     class Meta:
         model = Farm_Management
-        fields = ('farm_name', 'company_num', 'farm_owner', 'farm_postcode', 'farm_addr1', 'farm_addr2', 'farm_tel_num', 'farm_status')
+        fields = ('farm_name', 'company_num', 'farm_owner', 'farm_postcode', 'farm_addr1', 'farm_addr2', 'farm_tel_num')
 
 
 # barn 등록 form
@@ -110,5 +101,5 @@ class barnInsertForm(forms.ModelForm):
     )
 
     class Meta:
-        model = Farm_Management
+        model = Barn_Management
         fields = ('barn_name', 'barn_info_scale', 'barn_info_volumn', 'barn_info_bigo')
