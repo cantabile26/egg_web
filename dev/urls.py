@@ -11,6 +11,7 @@ urlpatterns = [
     path('code_up_update/<int:code_up_code>', views.code_up_update, name="codeUpdatePage"),
     # 하위코드
     path(r'code_down_list/<int:code_up>', views.view_code_down_list, name="codeDownList"),
+    path('code_down_insert/<int:code_up_code>', views.code_down_add, name="codeDownInsertPage")
     
 ]
 

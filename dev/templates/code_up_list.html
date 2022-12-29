@@ -41,7 +41,7 @@
       {%endif%}
     </td>
     <td class="text-center align-middle p-2">
-      <a type="button" class="p-1 border border-primary rounded text-tertiary me-3 d-inline-flex align-items-center" hx-get="{% url 'dev:codeDownList' up.code_up%}" hx-target="#codeDownSwap" hx-swap="innerHTML">
+      <a code-up-code="{{up.code_up}}" id="code_up_{{up.code_up}}" type="button" class="p-1 border border-primary rounded text-tertiary me-3 d-inline-flex align-items-center" hx-get="{% url 'dev:codeDownList' up.code_up%}" hx-target="#codeDownSwap" hx-swap="innerHTML">
         하위코드
         &nbsp;<i class="fa-solid fa-chevron-right"></i>
       </a>

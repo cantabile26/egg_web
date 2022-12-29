@@ -1,55 +1,77 @@
-<tr>
-  <td colspan="9">
-    {{code_up_code}}
-  </td>
-</tr>
-{%for down in code_down%}
-  <tr>
-    <td class="text-center">
-      <a class="text-info fw-bold">{{down.code_up_code}}</a>
-    </td>
-    <td class="text-center">
-      <a class="text-info fw-bold">{{down.code_down}}</a>
-    </td>
-    <td class="text-center">
-      <span>{{down.code_value1}}</span>
-    </td>
-    <td class="text-center">
-      <span>{{down.code_value2}}</span>
-    </td>
-    <td class="text-center">
-      <span>{{down.code_value3}}</span>
-    </td>
-    <td class="text-center">
-      <span>{{down.code_value4}}</span>
-    </td>
-    <td class="text-center">
-      <span>{{down.code_value5}}</span>
-    </td>
-    <td class="text-center">
-      <span>{{down.code_value6}}</span>
-    </td>
-    <td class="text-center">
-      {%if down.code_down_status == "show"%}
-        <span
-        data-bs-toggle="tooltip" data-bs-placement="top"
-        data-bs-title="사용가능">
-          <i class="fa-solid fa-eye"></i>
-        </span>
-      {%elif down.code_down_status == "hide"%}
-        <span
-        data-bs-toggle="tooltip" data-bs-placement="top"
-        data-bs-title="숨김상태">
-          <i class="fa-solid fa-eye-slash"></i>
-        </span>
-      {%endif%}
-    </td>
-  </tr>
-  {% empty %}
-  <tr class="text-center" style="width:100%">
-    <td colspan="9">
-      <small class="text-uppercase text-muted">좌측의 상위코드를 선택해 주세요.</small>
-    </td>
-  </tr>
-{% endfor%}  
-
+<div class="card-header border-gray-100 d-flex justify-content-between align-items-center">
+  <h2 class="h4 mb-0">
+    하위코드
+    {% if  code_up_data.code_up_name%}({{code_up_data.code_up_name}}){% endif %}
+  </h2>
+  <button class="btn btn-sm btn-pill btn-outline-info" hx-get="{% url 'dev:codeDownInsertPage' code_up %}" hx-target="#code_down_insert_dialog">+하위코드 등록</button>
+</div>
+<div class="card-body" >
+  <input type="hidden" id="code_up_code" datatarget="{{code_up}}" />
+  <div class="table-responsive">
+    <table class="table table-centered table-nowrap mb-0 rounded">
+      <thead class="thead-light">
+        <tr>
+          <th class="border-0 rounded-start">상위코드</th>
+          <th class="border-0">하위코드</th>
+          <th class="border-0">하위코드값1</th>
+          <th class="border-0">하위코드값2</th>
+          <th class="border-0">하위코드값3</th>
+          <th class="border-0">하위코드값4</th>
+          <th class="border-0">하위코드값5</th>
+          <th class="border-0">하위코드값6</th>                
+          <th class="border-0 rounded-end">하위코드상태</th>
+        </tr>
+      </thead>
+      <tbody>
+      {%for down in code_down%}
+        <tr>
+          <td class="text-center">
+            <a class="text-info fw-bold">{{down.code_up_code.code_up}}</a>
+          </td>
+          <td class="text-center">
+            <a class="text-info fw-bold">{{down.code_down}}</a>
+          </td>
+          <td class="text-center">
+            <span>{{down.code_value1}}</span>
+          </td>
+          <td class="text-center">
+            <span>{{down.code_value2}}</span>
+          </td>
+          <td class="text-center">
+            <span>{{down.code_value3}}</span>
+          </td>
+          <td class="text-center">
+            <span>{{down.code_value4}}</span>
+          </td>
+          <td class="text-center">
+            <span>{{down.code_value5}}</span>
+          </td>
+          <td class="text-center">
+            <span>{{down.code_value6}}</span>
+          </td>
+          <td class="text-center">
+            {%if down.code_down_status == "show"%}
+              <span
+              data-bs-toggle="tooltip" data-bs-placement="top"
+              data-bs-title="사용가능">
+                <i class="fa-solid fa-eye"></i>
+              </span>
+            {%elif down.code_down_status == "hide"%}
+              <span
+              data-bs-toggle="tooltip" data-bs-placement="top"
+              data-bs-title="숨김상태">
+                <i class="fa-solid fa-eye-slash"></i>
+              </span>
+            {%endif%}
+          </td>
+        </tr>
+        {% empty %}
+        <tr class="text-center" style="width:100%">
+          <td colspan="9">
+            <small class="text-uppercase text-muted">{{none_msg}}</small>
+          </td>
+        </tr>
+      {% endfor%}  
+    </table>
+  </div>
+</div>
