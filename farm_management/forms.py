@@ -4,6 +4,14 @@ from farm_management.models import Farm_Management, Barn_Management
 
 # farm 등록 form
 class FarmInsertForm(forms.ModelForm):
+    farm_code = forms.IntegerField(
+        required=True,
+        widget=forms.NumberInput(
+        attrs={
+            "placeholder" : "농가코드",
+            "class" : "form-control"
+        }
+    ))
     farm_name = forms.CharField(
         widget=forms.TextInput(
             attrs={
@@ -62,11 +70,19 @@ class FarmInsertForm(forms.ModelForm):
     )
     class Meta:
         model = Farm_Management
-        fields = ('farm_name', 'company_num', 'farm_owner', 'farm_postcode', 'farm_addr1', 'farm_addr2', 'farm_tel_num')
+        fields = ('farm_code', 'farm_name', 'company_num', 'farm_owner', 'farm_postcode', 'farm_addr1', 'farm_addr2', 'farm_tel_num')
 
 
 # barn 등록 form
 class barnInsertForm(forms.ModelForm):
+    barn_code = forms.IntegerField(
+        required=True,
+        widget=forms.NumberInput(
+        attrs={
+            "placeholder" : "축사코드",
+            "class" : "form-control"
+        }
+    ))
     barn_name = forms.CharField(
         widget=forms.TextInput(
             attrs={
@@ -92,7 +108,7 @@ class barnInsertForm(forms.ModelForm):
         )
     )
     barn_info_bigo = forms.CharField(
-        widget=forms.TextInput(
+        widget=forms.Textarea(
             attrs={
                 "placeholder": "축사설명",
                 "class": "form-control"
@@ -102,4 +118,46 @@ class barnInsertForm(forms.ModelForm):
 
     class Meta:
         model = Barn_Management
-        fields = ('barn_name', 'barn_info_scale', 'barn_info_volumn', 'barn_info_bigo')
+        fields = ('barn_code', 'barn_name', 'barn_info_scale', 'barn_info_volumn', 'barn_info_bigo')
+
+# barn 수정 form
+class barnUpdateForm(forms.ModelForm):
+    barn_code = forms.IntegerField(
+        widget=forms.HiddenInput(),
+    )
+    barn_name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder":"축사명",
+                "class" : "form-control"
+            }
+        )
+    )
+    barn_info_scale = forms.CharField(
+        widget = forms.TextInput(
+        attrs={
+                "placeholder":"축사규모",
+                "class":"form-control"
+            }
+        )
+    )
+    barn_info_volumn = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "축사용량",
+                "class": "form-control"
+            }
+        )
+    )
+    barn_info_bigo = forms.CharField(
+        widget=forms.Textarea(
+            attrs={
+                "placeholder": "축사설명",
+                "class": "form-control"
+            }
+        )
+    )
+
+    class Meta:
+        model = Barn_Management
+        fields = ('barn_code', 'barn_name', 'barn_info_scale', 'barn_info_volumn', 'barn_info_bigo')

@@ -1,7 +1,7 @@
 {%for barn in barn_list%}
     <tr>
         <td class="text-center">
-            <a class="text-info fw-bold">{{barn.barn_name}}</a>
+            <a class="text-info fw-bold" hx-get="{% url 'farm_management:barnUpdatePage' %}" hx-target="#barn_update_dialog">{{barn.barn_name}}</a>
         </td>
         <td class="text-center">
             <a class="text-info fw-bold">{{barn.barn_info_scale}}</a>

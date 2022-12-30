@@ -15,6 +15,11 @@
     <div id="barn_insert_dialog" class="modal-dialog" hx-target="this"></div>
 </div>
 <!--end Modal Content -->
+<!-- 축사 수정 Modal Content -->
+<div id="barn_update_modal" class="modal fade">
+    <div id="barn_update_dialog" class="modal-dialog" hx-target="this"></div>
+</div>
+<!--end Modal Content -->
 
 <div class="py-4">
     <div class="d-flex justify-content-between w-100 flex-wrap">
@@ -33,7 +38,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-centered table-nowrap mb-0 rounded">
-                    <thead>
+                    {% comment %} <thead>
                         <tr>
                             <th rowspan='2' valign="middle">농가명</th>
                             <td rowspan='2' valign="middle"></td>
@@ -56,7 +61,7 @@
                             <th>상세주소</th>
                             <td colspan='5'></td>
                         </tr>
-                    </thead>
+                    </thead> {% endcomment %}
                     <tbody hx-trigger="load, farmListPageChanged from:body" hx-get="{% url 'farm_management:farmListPage' %}" hx-target="this">
                     </tbody>
                 </table>
@@ -138,7 +143,26 @@
         htmx.on("hidden.bs.modal", () => {
             document.getElementById("barn_insert_dialog").innerHTML = ""
         })
+    
+        const barn_udate_modal = new bootstrap.Modal(document.getElementById("barn_update_modal"))
+        console.log(1111)
+        htmx.on("htmx:afterSwap", (e) => {
+            console.log("1111")
+          // Response targeting #dialog => show the modal
+            if (e.detail.target.id == "barn_update_dialog") {
+                barn_udate_modal.show()
+            }
+        })
+        htmx.on("htmx:beforeSwap", (e) => {
+          // Empty response targeting #dialog => hide the modal
+            if (e.detail.target.id == "barn_update_dialog" && !e.detail.xhr.response) {
+                barn_udate_modal.hide()
+            e.detail.shouldSwap = false
+            }
+        })
+        htmx.on("hidden.bs.modal", () => {
+            document.getElementById("barn_update_dialog").innerHTML = ""
+        })
     }
-
 </script>
 {% endblock javascripts %}

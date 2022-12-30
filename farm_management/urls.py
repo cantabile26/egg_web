@@ -14,5 +14,6 @@ urlpatterns = [
     # barn 등록
     path('barn_list/', views.barn_list_up, name="barnListPage"),
     path('barn_insert/', views.barn_insert_view, name="barnInsertPage"),
-
+    # barn 수정
+    path('barn_update/', views.barn_update, name="barnUpdatePage"),
 ]

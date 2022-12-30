@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
-from .forms import FarmInsertForm, barnInsertForm
+from .forms import FarmInsertForm, barnInsertForm, barnUpdateForm
 from django.http import HttpResponse 
 from .models import Farm_Management, Barn_Management
 
@@ -42,6 +42,7 @@ def farm_insert_view(request):
         if form.is_valid():
             print("1111111111form1111111")
             new_farm = form.save(commit=False)
+            new_farm.insert_id = request.user.username
 
             print(new_farm.farm_name,
             new_farm.company_num,
@@ -89,7 +90,8 @@ def barn_insert_view(request):
             print("1111111111form1111111")
             new_barn = form.save(commit=False)
 
-            print(new_barn.barn_name,
+            print(new_barn.barn_code,
+            new_barn.barn_name,
             new_barn.barn_info_scale,
             new_barn.barn_info_volumn,
             new_barn.barn_info_bigo,)
@@ -106,3 +108,42 @@ def barn_insert_view(request):
     context['success'] = success
     
     return render(request, "barn_insert.html", context)
+
+# barn 수정
+def barn_update(request, farm_code):
+    error_type = None
+    msg = None
+    success = False
+    context = {}
+    
+    if len(get_barn_list_up(farm_code)) == 0:
+        error_type = 'error01'
+        msg = "잘못된 접근입니다."
+        barn_data = None
+        form=None
+    else:
+        barn_data = get_barn_list_up(farm_code)[0]
+
+    if request.method == 'POST':
+        form = barnUpdateForm(request.POST, instance=barn_data)
+        msg = "등록이 완료되었습니다."
+        success = True
+
+        if form.is_valid():
+            new_commit = form.save(commit=False)
+            new_commit.save()
+
+            return HttpResponse(status=204, headers={'HX-Trigger':'barnListChanged'})
+    else:
+        if barn_data :
+            form = barnUpdateForm(instance=barn_data)
+        else:
+            form = None
+    
+    context['error_type'] = error_type
+    context['msg'] = msg
+    context['success'] = success
+    context['form'] = form
+    context['barn_data'] = barn_data
+    
+    return render(request, "barn_update.html", context)
