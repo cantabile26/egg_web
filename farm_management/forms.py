@@ -75,14 +75,6 @@ class FarmInsertForm(forms.ModelForm):
 
 # barn 등록 form
 class barnInsertForm(forms.ModelForm):
-    barn_code = forms.IntegerField(
-        required=True,
-        widget=forms.NumberInput(
-        attrs={
-            "placeholder" : "축사코드",
-            "class" : "form-control"
-        }
-    ))
     barn_name = forms.CharField(
         widget=forms.TextInput(
             attrs={
@@ -118,13 +110,10 @@ class barnInsertForm(forms.ModelForm):
 
     class Meta:
         model = Barn_Management
-        fields = ('barn_code', 'barn_name', 'barn_info_scale', 'barn_info_volumn', 'barn_info_bigo')
+        fields = ('barn_name', 'barn_info_scale', 'barn_info_volumn', 'barn_info_bigo')
 
 # barn 수정 form
 class barnUpdateForm(forms.ModelForm):
-    barn_code = forms.IntegerField(
-        widget=forms.HiddenInput(),
-    )
     barn_name = forms.CharField(
         widget=forms.TextInput(
             attrs={
@@ -160,4 +149,4 @@ class barnUpdateForm(forms.ModelForm):
 
     class Meta:
         model = Barn_Management
-        fields = ('barn_code', 'barn_name', 'barn_info_scale', 'barn_info_volumn', 'barn_info_bigo')
+        fields = ('barn_name', 'barn_info_scale', 'barn_info_volumn', 'barn_info_bigo')
