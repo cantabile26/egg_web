@@ -1,6 +1,11 @@
 from django.db import models
 
 # Create your models here.
+class User_Farm(models.Model):
+    id_farm = models.BigIntegerField("id_farm", primary_key=True, null=False, auto_created=True)
+    insert_id = models.CharField("insert id", max_length=100, null=False)
+    insert_farm = models.BigIntegerField("insert_farm", null=False)
+
 
 class Farm_Management(models.Model):
     farm_code = models.BigIntegerField("농가코드", primary_key=True)
@@ -18,7 +23,7 @@ class Farm_Management(models.Model):
         super(Farm_Management, self).save(*args, **kwargs)
 
 class Barn_Management(models.Model):
-    barn_in_farm = models.ForeignKey(Farm_Management, related_name="농가코드", on_delete=models.CASCADE)
+    # barn_in_farm = models.ForeignKey(Farm_Management, related_name="농가코드", on_delete=models.CASCADE)
     barn_code = models.AutoField("축사코드",primary_key=True,auto_created=True)
     barn_name = models.CharField("축사이름", max_length=50, null=False)
     barn_info_scale = models.CharField("축사규모", max_length=50, null=False)

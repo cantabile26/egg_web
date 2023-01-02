@@ -1,6 +1,6 @@
 from django import forms
 # from django.contrib.auth.models import User
-from farm_management.models import Farm_Management, Barn_Management
+from farm_management.models import Farm_Management, Barn_Management, User_Farm
 
 # farm 등록 form
 class FarmInsertForm(forms.ModelForm):

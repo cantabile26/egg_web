@@ -4,9 +4,14 @@ from django.contrib.auth import get_user_model
 from .forms import FarmInsertForm, barnInsertForm, barnUpdateForm
 from django.http import HttpResponse 
 from django.db.models import Q
-from .models import Farm_Management, Barn_Management
+from .models import Farm_Management, Barn_Management, User_Farm
 
 # Create your views here.
+
+def hide(self):
+    form = User_Farm(self.POST)
+    form.insert_farm = None
+    self.save()
 
 @login_required(login_url="/users/")
 def farm_management_view(request):
@@ -18,6 +23,19 @@ def farm_management_view(request):
     getUser = get_user_model()
     user = get_object_or_404(getUser, username=request.user)
 
+    form = User_Farm(request.POST)
+    form.insert_id = user
+
+    # form.insert_farm = None
+    if form.insert_farm is None:
+        print("등록된 농가가 없습니다.")
+        return render(request,"farm_management.html")
+    else:
+        print(user)
+        print("유저 농가 검증")
+        print(form.id_farm)
+    
+    context['farm_list'] = get_farm_list_up()
 
     return render(request, "farm_management.html", context)
 
@@ -41,11 +59,12 @@ def farm_insert_view(request):
     context = {}
     if request.method == "POST":
         form = FarmInsertForm(request.POST)
-    
+
         if form.is_valid():
             print("농가등록합니다~")
             new_farm = form.save(commit=False)
             new_farm.insert_id = request.user.username
+            
 
             print(new_farm.farm_name,
             new_farm.company_num,
