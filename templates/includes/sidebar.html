@@ -77,6 +77,14 @@
           <span class="sidebar-text">사용자관리</span>
         </a>
       </li>
+      <li class="nav-item {% if 'dashboard' in segment %} active {% endif %}">
+        <a href="{% url 'farm:farmViewPage' %}" class="nav-link">
+          <span class="sidebar-icon">
+            <i class="fa-solid fa-users"></i>
+          </span> 
+          <span class="sidebar-text">농가관리</span>
+        </a>
+      </li>
       <li class="nav-item {% if 'eggtabletemp' in segment %} active {% endif %}">
         <span
           class="nav-link  collapsed  d-flex justify-content-between align-items-center"

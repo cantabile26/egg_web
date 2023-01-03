@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from django.db.models import Q
-from farm.models import Farm, Barn, User_Farm
+from farms.models import Farm, Barn, User_Farm
 
 
 def get_farm_list(user=None):
@@ -27,7 +27,7 @@ def farm_view(request):
   
   print(user.username)
   print(user)
-  # print(User_Farm.objects.get(user_id=user))
+  print(get_farm_list(user))
   
   return render(request, "farm.html", context)
   

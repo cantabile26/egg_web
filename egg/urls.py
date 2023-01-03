@@ -5,7 +5,7 @@ from django.conf import settings
 from main import urls as main
 from users import urls as users
 from dev import urls as dev
-from farm import urls as farm
+from farms import urls as farms
 from eggtemp import urls as eggtemp
 from eggpagetemp import urls as eggpagetemp
 from eggtabletemp import urls as eggtabletemp
@@ -20,7 +20,7 @@ urlpatterns = [
     #dev - 관리자 페이지
     path('dev/', include(dev)),
     #farm
-    path('farm/', include(farm)),
+    path('farm/', include(farms)),
     #template 
     path('eggtemp/', include(eggtemp)),
     path('eggpagetemp/', include(eggpagetemp)),

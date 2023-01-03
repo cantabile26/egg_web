@@ -1,5 +1,5 @@
 from django.urls import path
-from farm import views
+from farms import views
 
 app_name = "farm"
 
