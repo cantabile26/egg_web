@@ -27,7 +27,8 @@
             </div>  
         <span class="text-danger">{{ form.farm_owner.errors }}</span>
         </div>
-    
+
+        <!-- 주소 입력 부분 -->
         <div class="form-group mb-4">
             <label for="farm_addr1">농가 주소</label>
             <div class="input-group">
@@ -37,6 +38,7 @@
             <div class="input-group">
                 <input class="form-control" type="text" id="farm_addr1" name="farm_addr1" placeholder="주소" readonly="readonly"><br>
             </div>
+            <!-- 상세주소 입력 부분  -->
             <div class="form-group mb-4">
                 <div class="input-group">
                     {{ form.farm_addr2 }}
@@ -51,6 +53,7 @@
                 </div>  
             <span class="text-danger">{{ form.farm_tel_num.errors }}</span>
         </div>
+
         <div class="form-group mb-4">
             <label for="farm_code">등록코드</label>
                 <div class="input-group">
@@ -59,14 +62,17 @@
             <span class="text-danger">{{ form.farm_code.errors }}</span>
         </div>
     </div>
+    
     <div class="modal-footer">
         <button type="button" data-bs-dismiss="modal" class="btn btn-gray-200">취소</button>
         <button type="submit" class="btn btn-info">추가하기</button>
     </div>
 </form>
 
+
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+    // 주소 입력 script
     function farm_address_postcode() {
         new daum.Postcode({
             oncomplete: function(data) {
@@ -95,8 +101,8 @@
                     fullRoadAddr += extraRoadAddr;
                 }
 
-               // 우편번호와 주소 정보를 해당 필드에 넣는다.
-
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                // farm_management 모델 postcode, addr1에 입력  
                 $("[name=farm_postcode]").val(data.zonecode);
                 $("[name=farm_addr1]").val(fullRoadAddr);
             }

@@ -1,12 +1,17 @@
 from django.db import models
 
 # Create your models here.
+
+# 사용자 농가 조인테이블 try하는 중..
 class User_Farm(models.Model):
     id_farm = models.BigIntegerField("id_farm", primary_key=True, null=False, auto_created=True)
     insert_id = models.CharField("insert id", max_length=100, null=False)
-    insert_farm = models.BigIntegerField("insert_farm", null=False)
+    insert_farm = models.ForeignKey("Farm_Management", related_name="농가코드", on_delete=models.CASCADE)
 
+    def save(self, *args, **kwargs):
+        super(User_Farm, self).save(*args, **kwargs)
 
+# 농가 관리 모델
 class Farm_Management(models.Model):
     farm_code = models.BigIntegerField("농가코드", primary_key=True)
     farm_name = models.CharField("농가명", max_length=100, null=False)
@@ -22,6 +27,7 @@ class Farm_Management(models.Model):
     def save(self, *args, **kwargs):
         super(Farm_Management, self).save(*args, **kwargs)
 
+# 축사 관리 모델
 class Barn_Management(models.Model):
     # barn_in_farm = models.ForeignKey(Farm_Management, related_name="농가코드", on_delete=models.CASCADE)
     barn_code = models.AutoField("축사코드",primary_key=True,auto_created=True)

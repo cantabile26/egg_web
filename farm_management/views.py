@@ -8,11 +8,7 @@ from .models import Farm_Management, Barn_Management, User_Farm
 
 # Create your views here.
 
-def hide(self):
-    form = User_Farm(self.POST)
-    form.insert_farm = None
-    self.save()
-
+# 농가 관리 main page
 @login_required(login_url="/users/")
 def farm_management_view(request):
     context = {}
@@ -23,17 +19,20 @@ def farm_management_view(request):
     getUser = get_user_model()
     user = get_object_or_404(getUser, username=request.user)
 
-    form = User_Farm(request.POST)
-    form.insert_id = user
+    # 유저로 들어와서 농가가 있을 때 다 보이고 없을 때 안보이게 try .. 
+    # form = User_Farm(request.POST)
+    # form.insert_id = user
+    # farm_incode = form.insert_farm 
 
-    # form.insert_farm = None
-    if form.insert_farm is None:
-        print("등록된 농가가 없습니다.")
-        return render(request,"farm_management.html")
-    else:
-        print(user)
-        print("유저 농가 검증")
-        print(form.id_farm)
+    # if farm_incode is None:
+    #     print("등록된 농가가 없습니다.")
+    #     context['farm_list'] = get_farm_list_up()
+        
+    #     return render(request,"farm_management.html")
+    # else:
+    #     print(user)
+    #     print("유저 농가 검증")
+    #     print(form.id_farm)
     
     context['farm_list'] = get_farm_list_up()
 
@@ -91,9 +90,6 @@ def farm_insert_view(request):
 # barn 등록 view
 def get_barn_list_up():
 
-    # q = Q()
-    # q.add(Q(farm_code=barn_in_farm), q.AND)
-    # barn_list_up = Barn_Management.objects.filter(q)
     barn_list_up = Barn_Management.objects.all()
     
     return barn_list_up

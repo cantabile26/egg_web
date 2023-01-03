@@ -59,7 +59,6 @@ INSTALLED_APPS = [
     'dev',
     'main',
     'eggtemp',
-    'egg_info',
     'eggpagetemp',
     'eggtabletemp',
     'farm_management'
