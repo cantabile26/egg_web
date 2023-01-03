@@ -1,0 +1,55 @@
+<tr>
+  <td colspan="9">
+    {{code_up_code}}
+  </td>
+</tr>
+{%for down in code_down%}
+  <tr>
+    <td class="text-center">
+      <a class="text-info fw-bold">{{down.code_up_code}}</a>
+    </td>
+    <td class="text-center">
+      <a class="text-info fw-bold">{{down.code_down}}</a>
+    </td>
+    <td class="text-center">
+      <span>{{down.code_value1}}</span>
+    </td>
+    <td class="text-center">
+      <span>{{down.code_value2}}</span>
+    </td>
+    <td class="text-center">
+      <span>{{down.code_value3}}</span>
+    </td>
+    <td class="text-center">
+      <span>{{down.code_value4}}</span>
+    </td>
+    <td class="text-center">
+      <span>{{down.code_value5}}</span>
+    </td>
+    <td class="text-center">
+      <span>{{down.code_value6}}</span>
+    </td>
+    <td class="text-center">
+      {%if down.code_down_status == "show"%}
+        <span
+        data-bs-toggle="tooltip" data-bs-placement="top"
+        data-bs-title="사용가능">
+          <i class="fa-solid fa-eye"></i>
+        </span>
+      {%elif down.code_down_status == "hide"%}
+        <span
+        data-bs-toggle="tooltip" data-bs-placement="top"
+        data-bs-title="숨김상태">
+          <i class="fa-solid fa-eye-slash"></i>
+        </span>
+      {%endif%}
+    </td>
+  </tr>
+  {% empty %}
+  <tr class="text-center" style="width:100%">
+    <td colspan="9">
+      <small class="text-uppercase text-muted">좌측의 상위코드를 선택해 주세요.</small>
+    </td>
+  </tr>
+{% endfor%}  
+

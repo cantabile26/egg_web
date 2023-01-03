@@ -1,0 +1,54 @@
+{% if  error_type is None%}
+<form hx-post="{{ request.path }}"> 
+{% csrf_token %} 
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">상위코드({{code_up_data.code_up}}) 수정</h5>
+    </div>
+    <div class="modal-body">
+      <div class="form-group mb-4">
+        {{ form.code_up }}
+        <label for="code_up_name">코드명</label>
+        <div class="input-group">
+          {{ form.code_up_name }}
+        </div>  
+        <span class="text-danger">{{ form.code_up_name.errors }}</span>
+      </div>
+      <div class="form-group">                  
+        <div class="form-group mb-4">
+            <label for="code_up_info">설명</label>
+            <div class="input-group">
+                {{ form.code_up_info }}
+            </div>  
+            <span class="text-danger">{{ form.code_up_info.errors }}</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-group mb-4">
+          <label for="code_up_info">상태</label>
+          <div class="input-group">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="code_up_status" id="radios1" value="show" {% if code_up_data.code_up_status == 'show'  %}checked{% endif %}>
+              <label class="form-check-label" for="radios1">
+                  사용하기
+              </label>
+            </div>
+            <div class="form-check ms-4">
+              <input class="form-check-input" type="radio" name="code_up_status" id="radios2" value="hide" {% if code_up_data.code_up_status == 'hide'  %}checked{% endif %}>
+              <label class="form-check-label" for="radios2">
+                  숨기기
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>     
+    </div>
+    <div class="modal-footer">
+      <button type="button" data-bs-dismiss="modal" class="btn btn-gray-200">취소</button>
+      <button type="submit" class="btn btn-info">수정하기</button>
+    </div>
+  </div>
+</form>
+{% else  %}
+{% include 'modal/error_modal.html' %}
+{% endif %}

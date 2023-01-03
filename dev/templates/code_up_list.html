@@ -1,0 +1,54 @@
+{%for up in code_up%}
+  <tr>
+    <td class="text-center align-middle p-2">
+      <a class="text-info fw-bold" hx-get="{% url 'dev:codeUpdatePage' up.code_up%}" hx-target="#code_up_update_dialog">
+        {{up.code_up}}
+      </a>
+    </td>
+    <td class="text-center align-middle p-2">
+      <a class="text-info fw-bold" hx-get="{% url 'dev:codeUpdatePage' up.code_up%}" hx-target="#code_up_update_dialog">
+        {{up.code_up_name}}
+      </a>
+    </td>
+    <td class="text-center align-middle p-2">
+      {%if up.code_up_info != "" and up.code_up_info%}
+        <span
+        data-bs-toggle="tooltip" data-bs-placement="top"
+        data-bs-title="{{up.code_up_info}}">
+          <h6 class="mb-0"><i class="fa-solid fa-circle-info"></i></h6>
+        </span>
+      {%else%}
+        <span
+        data-bs-toggle="tooltip" data-bs-placement="top"
+        data-bs-title="등록된 내용이 없습니다.">
+          <h6 class="mb-0"><i class="fa-solid fa-circle-xmark"></i></h6>
+        </span>
+      {%endif%}
+    </td>
+    <td class="text-center align-middle p-2">
+      {%if up.code_up_status == "show"%}
+        <span
+        data-bs-toggle="tooltip" data-bs-placement="top"
+        data-bs-title="사용가능">
+          <h6 class="mb-0"><i class="fa-solid fa-eye"></i></h6>
+        </span>
+      {%elif up.code_up_status == "hide"%}
+        <span
+        data-bs-toggle="tooltip" data-bs-placement="top"
+        data-bs-title="숨김상태">
+          <h6 class="mb-0"><i class="fa-solid fa-eye-slash"></i></h6>
+        </span>
+      {%endif%}
+    </td>
+    <td class="text-center align-middle p-2">
+      <a type="button" class="p-1 border border-primary rounded text-tertiary me-3 d-inline-flex align-items-center" hx-get="{% url 'dev:codeDownList' up.code_up%}" hx-target="#codeDownSwap" hx-swap="innerHTML">
+        하위코드
+        &nbsp;<i class="fa-solid fa-chevron-right"></i>
+      </a>
+    </td>
+  </tr>
+  {% empty %}
+  <div class="text-center">
+    <small class="text-uppercase text-muted">등록된 내용이 없습니다.</small>
+  </div>
+{% endfor%}  
