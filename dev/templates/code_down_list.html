@@ -3,7 +3,9 @@
     하위코드
     {% if  code_up_data.code_up_name%}({{code_up_data.code_up_name}}){% endif %}
   </h2>
+  {% if  code_up != 0%}
   <button class="btn btn-sm btn-pill btn-outline-info" hx-get="{% url 'dev:codeDownInsertPage' code_up %}" hx-target="#code_down_insert_dialog">+하위코드 등록</button>
+  {% endif %}
 </div>
 <div class="card-body" >
   <input type="hidden" id="code_up_code" datatarget="{{code_up}}" />

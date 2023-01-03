@@ -1,0 +1,19 @@
+{% for farm in farm_list %}
+    <tr>
+        <td rowspan='2' valign="middle">
+            <a class="text-info fw-bold">{{farm.farm_name}}</a>
+        </td>
+        <td>{{farm.company_num}}</td>
+        <td>{{farm.farm_owner}}</td>
+    </tr>
+    <tr>
+        <td>{{farm.farm_postcode}}</td>
+        <td>{{farm.farm_tel_num}}</td>
+    </tr>
+    <tr>
+        <td colspan='5'>{{farm.farm_addr1}}</td>
+    </tr>
+    <tr>
+        <td colspan='5'>{{farm.farm_addr2}}</td>
+    </tr>
+{% endfor %}

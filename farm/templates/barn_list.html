@@ -1,0 +1,20 @@
+{%for barn in barn_list%}
+    <tr>
+        <td class="text-center">
+            <a class="text-info fw-bold" hx-get="{% url 'farm_management:barnUpdatePage' %}" hx-target="#barn_update_dialog">{{barn.barn_name}}</a>
+        </td>
+        <td class="text-center">
+            <a class="text-info fw-bold">{{barn.barn_info_scale}}</a>
+        </td>
+        <td class="text-center">
+            <a class="text-info fw-bold">{{barn.barn_info_volumn}}</a>
+        </td>
+        <td class="text-center">
+            <a class="text-info fw-bold">{{barn.barn_info_bigo}}</a>
+        </td>
+    </tr>
+    {% empty %}
+        <div class="text-center">
+            <small class="text-uppercase text-muted">등록된 축사가 없습니다.</small>
+        </div>
+{% endfor%}  

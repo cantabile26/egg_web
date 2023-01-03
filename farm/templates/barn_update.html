@@ -1,0 +1,46 @@
+<form hx-post="{{ request.path }}" class="modal-content"> 
+{% csrf_token %} 
+    <div class="modal-header">
+        <h5 class="modal-title">축사 수정</h5>
+    </div>
+    <div class="modal-body">    
+        <div class="form-group mb-4">
+        <label for="barn_name">축사이름</label>
+            <div class="input-group">
+                {{ form.barn_name }}
+            </div>  
+        <span class="text-danger">{{ form.barn_name.errors }}</span>
+        </div>
+
+        <div class="form-group mb-4">
+        <label for="barn_info_scale">축사규모</label>
+            <div class="input-group">
+                {{ form.barn_info_scale }}
+            </div>  
+        <span class="text-danger">{{ form.barn_info_scale.errors }}</span>
+        </div>
+
+        <div class="form-group mb-4">
+        <label for="barn_info_volumn">축사용량</label>
+            <div class="input-group">
+                {{ form.barn_info_volumn }}
+            </div>  
+        <span class="text-danger">{{ form.barn_info_volumn.errors }}</span>
+        </div>
+    
+        <div class="form-group">                  
+            <div class="form-group mb-4">
+                <label for="barn_info_bigo">축사설명</label>
+                <div class="input-group">
+                    {{ form.barn_info_bigo }}
+                </div>  
+                <span class="text-danger">{{ form.barn_info_bigo.errors }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" data-bs-dismiss="modal" class="btn btn-gray-200">취소</button>
+        <button type="submit" class="btn btn-info">수정하기</button>
+    </div>
+</div>
+</form>
