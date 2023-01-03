@@ -43,9 +43,12 @@
         </div>
       </div>     
     </div>
-    <div class="modal-footer">
-      <button type="button" data-bs-dismiss="modal" class="btn btn-gray-200">취소</button>
-      <button type="submit" class="btn btn-info">수정하기</button>
+    <div class="modal-footer justify-content-between">
+      <button type="button" data-bs-dismiss="modal" class="btn btn-danger" hx-get="{% url 'dev:codeUpDelete' code_up_data.code_up %}">삭제</button>
+      <div>
+        <button type="button" data-bs-dismiss="modal" class="btn btn-gray-200">취소</button>
+        <button type="submit" class="btn btn-info">수정하기</button>
+      </div>
     </div>
   </div>
 </form>

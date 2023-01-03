@@ -1,0 +1,59 @@
+
+<form hx-post="{{ request.path }}" class="modal-content">  
+  {% csrf_token %}
+  <div class="modal-header">
+    <h5 class="modal-title">하위코드({{code_down_data.code_down}}) 수정</h5>
+  </div>
+  <div class="modal-body">    
+    <div class="form-group mb-4">
+      <input type="hidden" name="code_up_code_value" id="code_up_code_value" value="{{code_up_code}}" />
+      <label for="code_up">하위코드</label>
+      <div class="input-group">
+          {{ form.code_down }}
+      </div>  
+      <span class="text-danger">{{ form.code_down.errors }}</span>
+    </div> 
+    <div class="form-group mb-4">
+      <label for="code_up_name">값 1</label>
+      <div class="input-group">
+        {{ form.code_value1 }}
+      </div>  
+      <span class="text-danger">{{ form.code_value1.errors }}</span>
+    </div> 
+    <div class="form-group mb-4">
+      <label for="code_up_name">값 2</label>
+      <div class="input-group">
+        {{ form.code_value2 }}
+      </div>  
+      <span class="text-danger">{{ form.code_value2.errors }}</span>
+    </div>
+    <div class="form-group mb-4">
+      <label for="code_up_name">값 3</label>
+      <div class="input-group">
+        {{ form.code_value3 }}
+      </div>  
+      <span class="text-danger">{{ form.code_value3.errors }}</span>
+    </div>
+    <div class="form-group mb-4">
+      <label for="code_up_name">값 4</label>
+      <div class="input-group">
+        {{ form.code_value4 }}
+      </div>  
+      <span class="text-danger">{{ form.code_value4.errors }}</span>
+    </div>
+    <div class="form-group mb-4">
+      <label for="code_up_name">값 5</label>
+      <div class="input-group">
+        {{ form.code_value5 }}
+      </div>  
+      <span class="text-danger">{{ form.code_value5.errors }}</span>
+    </div>            
+  </div>
+  <div class="modal-footer justify-content-between">
+    <button type="button" data-bs-dismiss="modal" class="btn btn-danger" hx-get="{% url 'dev:codeDownDelete' code_up_code code_down_data.code_down%}">삭제</button>
+    <div>
+      <button type="button" data-bs-dismiss="modal" class="btn btn-gray-200">취소</button>
+      <button type="submit" class="btn btn-info">수정하기</button>
+    </div>
+  </div>
+</form>

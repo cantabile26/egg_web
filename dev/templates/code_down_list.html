@@ -26,7 +26,7 @@
       {%for down in code_down%}
         <tr>
           <td class="text-center">
-            <a class="text-info fw-bold">{{down.code_up_code.code_up}}</a>
+            <a class="text-info fw-bold" hx-get="{% url 'dev:codeDownUpdatePage' code_up down.code_down%}" hx-target="#code_down_update_dialog">{{down.code_up_code.code_up}}</a>
           </td>
           <td class="text-center">
             <a class="text-info fw-bold">{{down.code_down}}</a>

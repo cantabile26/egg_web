@@ -26,7 +26,6 @@ class CodeInsertForm(forms.ModelForm):
     required=False,
     widget=forms.Textarea(
       attrs={
-        "required":True,
         "placeholder":"상위코드 설명",
         "class" : "form-control"
       }
@@ -157,4 +156,68 @@ class CodeDownInsertForm(forms.ModelForm):
     
     fields = ( 'code_down', 'code_value1', 'code_value2', 'code_value3', 'code_value4', 'code_value5')
 
+
+class CodeDownUpdateForm(forms.ModelForm):
+  code_up_code_value = forms.IntegerField(
+    widget=forms.HiddenInput(),
+    )
+  code_down = forms.IntegerField(
+    required=True,
+    widget=forms.NumberInput(
+      attrs={
+        "placeholder" : "하위코드",
+        "class" : "form-control",
+        "readonly" : "True"
+      }
+    ))
+  code_value1 = forms.CharField(
+    max_length=500,
+    required=True,
+    widget=forms.TextInput(
+      attrs={
+        "placeholder" : "하위코드 값1",
+        "class" : "form-control"
+      }
+    ))
+  code_value2 = forms.CharField(
+    max_length=500,
+    required=False,
+    widget=forms.TextInput(
+      attrs={
+        "placeholder" : "하위코드 값2",
+        "class" : "form-control"
+      }
+    ))
+  code_value3 = forms.CharField(
+    max_length=500,
+    required=False,
+    widget=forms.TextInput(
+      attrs={
+        "placeholder" : "하위코드 값3",
+        "class" : "form-control"
+      }
+    ))
+  code_value4 = forms.CharField(
+    max_length=500,
+    required=False,
+    widget=forms.TextInput(
+      attrs={
+        "placeholder" : "하위코드 값4",
+        "class" : "form-control"
+      }
+    ))
+  code_value5 = forms.CharField(
+    max_length=500,
+    required=False,
+    widget=forms.TextInput(
+      attrs={
+        "placeholder" : "하위코드 값5",
+        "class" : "form-control"
+      }
+    ))
+  
+  class Meta:
+    model = CodeDown
+    
+    fields = ( 'code_down', 'code_value1', 'code_value2', 'code_value3', 'code_value4', 'code_value5')
 # 종료 - 하위코드

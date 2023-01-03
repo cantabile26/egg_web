@@ -86,5 +86,4 @@ def users_list_view(request):
   user = get_object_or_404(getUserModel, username=request.user)
   print(user)
   
-  
   return render(request, 'user_list.html', context)
