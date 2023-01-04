@@ -1,3 +1,4 @@
+{% load static %}
 <form hx-post="{{ request.path }}" class="modal-content">  
     {% csrf_token %}
     <div class="modal-header">
@@ -5,21 +6,19 @@
     </div>
     <div class="modal-body">    
         <div class="form-group mb-4">
-        <label for="farm_name">농가명</label>
-            <div class="input-group">
-                {{ form.farm_name }}
-            </div>  
-        <span class="text-danger">{{ form.farm_name.errors }}</span>
+            <label for="farm_name">농가명</label>
+                <div class="input-group">
+                    {{ form.farm_name }}
+                </div>  
+            <span class="text-danger">{{ form.farm_name.errors }}</span>
         </div>
-
         <div class="form-group mb-4">
-        <label for="company_num">사업자번호</label>
-            <div class="input-group">
-                {{ form.company_num }}
-            </div>  
-        <span class="text-danger">{{ form.company_num.errors }}</span>
+            <label for="company_num">사업자번호</label>
+                <div class="input-group">
+                    {{ form.company_num }}
+                </div>  
+            <span class="text-danger">{{ form.company_num.errors }}</span>
         </div>
-
         <div class="form-group mb-4">
         <label for="farm_owner">대표자명</label>
             <div class="input-group">
@@ -27,13 +26,12 @@
             </div>  
         <span class="text-danger">{{ form.farm_owner.errors }}</span>
         </div>
-
         <!-- 주소 입력 부분 -->
         <div class="form-group mb-4">
             <label for="farm_addr1">농가 주소</label>
             <div class="input-group">
                 <input class="form-control" type="text" id="farm_postcode" name="farm_postcode" placeholder="우편번호" readonly="readonly">
-                <input type="button" onclick="farm_address_postcode()" value="우편번호 찾기"><br>
+                <input class="btn btn-primary" type="button" onclick="farm_address_postcode()" value="우편번호 찾기"><br>
             </div>
             <div class="input-group">
                 <input class="form-control" type="text" id="farm_addr1" name="farm_addr1" placeholder="주소" readonly="readonly"><br>
@@ -45,21 +43,12 @@
                 </div>  
             </div>
         </div>
-
         <div class="form-group mb-4">
             <label for="farm_tel_num">연락처</label>
                 <div class="input-group">
                     {{ form.farm_tel_num }}
                 </div>  
             <span class="text-danger">{{ form.farm_tel_num.errors }}</span>
-        </div>
-
-        <div class="form-group mb-4">
-            <label for="farm_code">등록코드</label>
-                <div class="input-group">
-                    {{ form.farm_code }}
-                </div>  
-            <span class="text-danger">{{ form.farm_code.errors }}</span>
         </div>
     </div>
     
@@ -71,6 +60,7 @@
 
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="{% static 'js/function.js' %}"></script>
 <script>
     // 주소 입력 script
     function farm_address_postcode() {

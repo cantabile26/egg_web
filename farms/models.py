@@ -12,7 +12,7 @@ class Farm(models.Model):
   farm_addr1 = models.CharField("주소", max_length=500, null=True)
   farm_addr2 = models.CharField("상세주소", max_length=500, null=True)
   farm_tel_num = models.CharField("연락처", max_length=100, null=True)
-  farm_status = models.CharField("농가상태", max_length=10, null=False)
+  farm_status = models.CharField("농가상태", max_length=10, null=False, default='show')
   insert_id = models.CharField("insert id", max_length=100, null=True)
   insert_date = models.DateTimeField('insert date', null=True)
   update_id = models.CharField("update id", max_length=100, null=True)
@@ -55,4 +55,6 @@ class User_Farm(models.Model):
   user_id = models.ForeignKey(User, related_name="유저고유값", on_delete=models.CASCADE, db_column="user_id")
   farm_farm_code = models.ForeignKey("Farm", related_name="uf_농가코드", on_delete=models.CASCADE, db_column="farm_farm_code")
 
+  def save(self, *args, **kwargs):
+    super(User_Farm, self).save(*args, **kwargs)
   

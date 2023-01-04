@@ -1,15 +1,14 @@
 from django.urls import path
 from farms import views
 
-app_name = "farm"
+app_name = "farms"
 
 urlpatterns = [
-    # path('farm_register/', views.farm_register_view, name="farm_register"),
     path('', views.farm_view, name="farmViewPage"),
-
-    # # farm 등록
-    # path('farm_list/', views.farm_list_up, name="farmListPage"),
-    # path('farm_insert/', views.farm_insert_view, name="farmInsertPage"),
+    path('farm_list/', views.farm_list_view, name="farmListPage"),
+    # farm 등록
+    path('farm_insert/', views.farm_insert_view, name="farmInsertPage"),
+    path('farm_update/<str:farm_code>', views.farm_update_view, name="farmUpdatePage"),
 
     # # barn 등록
     # path('barn_list/', views.barn_list_up, name="barnListPage"),

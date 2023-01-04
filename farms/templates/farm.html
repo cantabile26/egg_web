@@ -28,48 +28,9 @@
         </div>
     </div>
 </div>
-<div class="card border-0 shadow mb-4">
-    <div class="card-header border-gray-100 d-flex justify-content-between align-items-center">
-        <h2 class="h4 mb-0">농가 정보</h2>
-        <div>
-            {% comment %} <button class="btn btn-sm btn-pill btn-outline-info" hx-get="{% url 'farm_management:farmInsertPage' %}" hx-target="#farm_insert_dialog">+농가등록</button> {% endcomment %}
-        </div>
-    </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-centered table-nowrap mb-0 rounded">
-                    {% comment %} <thead>
-                        <tr>
-                            <th rowspan='2' valign="middle">농가명</th>
-                            <td rowspan='2' valign="middle"></td>
-                            <th>사업자번호</th>
-                            <td></td>
-                            <th>대표자명</th>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>우편번호</th>
-                            <td></td>
-                            <th>연락처</th>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>주소</th>
-                            <td colspan='5'></td>
-                        </tr>
-                        <tr>
-                            <th>상세주소</th>
-                            <td colspan='5'></td>
-                        </tr>
-                    </thead> {% endcomment %}
-                    {% comment %} <tbody hx-trigger="load, farmListPageChanged from:body" hx-get="{% url 'farm_management:farmListPage' %}" hx-target="this">
-                    </tbody> {% endcomment %}
-                </table>
-            </div>
-    </div>
+<div class="card border-0 shadow mb-4" hx-trigger="load, farmListChange from:body" hx-get="{% url 'farms:farmListPage'%}" hx-target="this" id="farmListSwap" hx-swap-oob="true">
+{% comment %} 농가정보 load {% endcomment %}
 </div>
-
-
 <div class="card border-0 shadow mb-4">
     <div class="card-header border-gray-100 d-flex justify-content-between align-items-center">
         <h2 class="h4 mb-0">축사 정보</h2>
@@ -105,62 +66,44 @@
     window.onload=function(){
         //실행할 내용
         const farm_inster_modal = new bootstrap.Modal(document.getElementById("farm_insert_modal"))
-        console.log("농가등록모달")
-        htmx.on("htmx:afterSwap", (e) => {
-          // Response targeting #dialog => show the modal
-            if (e.detail.target.id == "farm_insert_dialog") {
-            farm_inster_modal.show()
-            }
-        })
-        htmx.on("htmx:beforeSwap", (e) => {
-          // Empty response targeting #dialog => hide the modal
-            if (e.detail.target.id == "farm_insert_dialog" && !e.detail.xhr.response) {
-            farm_inster_modal.hide()
-            e.detail.shouldSwap = false
-            }
-        })
-        htmx.on("hidden.bs.modal", () => {
-            document.getElementById("farm_insert_dialog").innerHTML = ""
-        })
-
         const barn_inster_modal = new bootstrap.Modal(document.getElementById("barn_insert_modal"))
-        console.log("축사등록모달")
-        htmx.on("htmx:afterSwap", (e) => {
-          // Response targeting #dialog => show the modal
-            if (e.detail.target.id == "barn_insert_dialog") {
-                barn_inster_modal.show()
-            }
-        })
-        htmx.on("htmx:beforeSwap", (e) => {
-          // Empty response targeting #dialog => hide the modal
-            if (e.detail.target.id == "barn_insert_dialog" && !e.detail.xhr.response) {
-                barn_inster_modal.hide()
-            e.detail.shouldSwap = false
-            }
-        })
-        htmx.on("hidden.bs.modal", () => {
-            document.getElementById("barn_insert_dialog").innerHTML = ""
-        })
-    
         const barn_udate_modal = new bootstrap.Modal(document.getElementById("barn_update_modal"))
         
         htmx.on("htmx:afterSwap", (e) => {
-            console.log("update modal")
-          // Response targeting #dialog => show the modal
+            // Response targeting #dialog => show the modal
+            if (e.detail.target.id == "farm_insert_dialog") {
+                farm_inster_modal.show()
+            }
+            if (e.detail.target.id == "barn_insert_dialog"){    
+                barn_inster_modal.show()
+            }
             if (e.detail.target.id == "barn_update_dialog") {
                 barn_udate_modal.show()
             }
         })
         htmx.on("htmx:beforeSwap", (e) => {
           // Empty response targeting #dialog => hide the modal
+            if (e.detail.target.id == "farm_insert_dialog" && !e.detail.xhr.response) {
+                farm_inster_modal.hide()
+                e.detail.shouldSwap = false
+            }
+            if (e.detail.target.id == "barn_insert_dialog" && !e.detail.xhr.response) {
+                barn_inster_modal.hide()
+                e.detail.shouldSwap = false
+            }
             if (e.detail.target.id == "barn_update_dialog" && !e.detail.xhr.response) {
                 barn_udate_modal.hide()
-            e.detail.shouldSwap = false
+                e.detail.shouldSwap = false
             }
         })
         htmx.on("hidden.bs.modal", () => {
+            document.getElementById("farm_insert_dialog").innerHTML = ""
+            document.getElementById("barn_insert_dialog").innerHTML = ""
             document.getElementById("barn_update_dialog").innerHTML = ""
         })
     }
+    {% comment %} document.getElementsByName('company_num').addEventListener('keyup', (e)=>{
+        console.log(e)
+    }) {% endcomment %}
 </script>
 {% endblock javascripts %}

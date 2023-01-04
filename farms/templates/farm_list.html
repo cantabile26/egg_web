@@ -1,19 +1,71 @@
-{% for farm in farm_list %}
-    <tr>
-        <td rowspan='2' valign="middle">
-            <a class="text-info fw-bold">{{farm.farm_name}}</a>
-        </td>
-        <td>{{farm.company_num}}</td>
-        <td>{{farm.farm_owner}}</td>
-    </tr>
-    <tr>
-        <td>{{farm.farm_postcode}}</td>
-        <td>{{farm.farm_tel_num}}</td>
-    </tr>
-    <tr>
-        <td colspan='5'>{{farm.farm_addr1}}</td>
-    </tr>
-    <tr>
-        <td colspan='5'>{{farm.farm_addr2}}</td>
-    </tr>
-{% endfor %}
+<div class="card-header border-gray-100 d-flex justify-content-between align-items-center">
+    <h2 class="h4 mb-0">농가 정보</h2>
+    <div>
+    {% if farm_user is not None %}
+        <button class="btn btn-sm btn-pill btn-outline-info" hx-get="{% url 'farms:farmUpdatePage' farm_user.farm_farm_code.farm_code%}" hx-target="#farm_insert_dialog">+농가수정</button>
+    {% else %}
+        <button class="btn btn-sm btn-pill btn-outline-info" hx-get="{% url 'farms:farmInsertPage' %}" hx-target="#farm_insert_dialog">+농가등록</button>
+    {% endif %}
+    </div>
+</div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-centered table-nowrap mb-0 rounded">
+                <tbody>
+                    <tr>
+                        <td >
+                            <div class="form-group mb-2">
+                                <label for="code_up">농가명</label>
+                                <div class="input-group">
+                                    {{form.farm_name}}
+                                </div>  
+                            </div>              
+                        </td>
+                        <td>
+                            <div class="form-group mb-2">
+                                <label for="code_up">사업자번호</label>
+                                <div class="input-group">
+                                    {{form.company_num}}
+                                </div>  
+                            </div>              
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group mb-2">
+                                <label for="code_up">연락처</label>
+                                <div class="input-group">
+                                    {{form.farm_tel_num}}
+                                </div>  
+                            </div>              
+                        </td>
+                        <td>
+                            <div class="form-group mb-2">
+                                <label for="code_up">대표자명</label>
+                                <div class="input-group">
+                                    {{form.farm_owner}}
+                                </div>  
+                            </div>              
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <div class="form-group mb-2">
+                                <label for="code_up">주소</label>
+                                <div class="input-group flex-column">
+                                    <div>
+                                        {{form.farm_postcode}}
+                                    </div>
+                                    <div>
+                                        {{form.farm_addr1}}
+                                        {{form.farm_addr2}}
+                                    </div>
+                                </div>  
+                            </div>              
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
