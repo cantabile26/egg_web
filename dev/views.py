@@ -40,7 +40,9 @@ def code_view(request):
   load_template = request.path.split('/')
   
   context['segment'] = load_template
+  context['nav_path'] = {'f':'세팅', 's':'코드관리'}
   context['code_down'] = False;
+  print('ccccc', request.session['farm_code'])
   
   getUser = get_user_model()
   user = get_object_or_404(getUser, username=request.user)
@@ -139,8 +141,6 @@ def code_up_delete(request, code_up_code):
 
 # 시작 - 하위코드 부분
 def view_code_down_list(request, code_up):
-  print('request', request.path)
-  print('select code', code_up)
   none_msg = '좌측의 상위코드를 선택해 주세요.' if code_up == 0 else '등록된 내용이 없습니다.'
   code_up_data = get_code_up_list(code_up)[0] if code_up != 0 else ''
   

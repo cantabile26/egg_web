@@ -204,46 +204,50 @@ class FarmUpdateForm(forms.ModelForm):
       fields = ('farm_code', 'farm_name', 'company_num', 'farm_owner', 'farm_postcode', 'farm_addr1', 'farm_addr2', 'farm_tel_num')
 
 # barn 등록 form
-class barnInsertForm(forms.ModelForm):
+class BarnInsertForm(forms.ModelForm):
     barn_name = forms.CharField(
-        widget=forms.TextInput(
-            attrs={
-                "placeholder":"축사명",
-                "class" : "form-control"
-            }
-        )
-    )
-    barn_info_scale = forms.CharField(
-        widget = forms.TextInput(
+      required=True,
+      widget=forms.TextInput(
         attrs={
-                "placeholder":"축사규모",
-                "class":"form-control"
-            }
-        )
-    )
+          "placeholder":"축사명",
+          "class" : "form-control"
+        }
+      ))
+    barn_info_scale = forms.CharField(
+      required=False,
+      widget = forms.TextInput(
+        attrs={
+          "placeholder":"축사규모",
+          "class":"form-control"
+        }
+      ))
     barn_info_volumn = forms.CharField(
-        widget=forms.TextInput(
-            attrs={
-                "placeholder": "축사용량",
-                "class": "form-control"
-            }
-        )
-    )
+      required=False,
+      widget=forms.TextInput(
+        attrs={
+          "placeholder": "축사용량",
+          "class": "form-control"
+        }
+      ))
     barn_info_bigo = forms.CharField(
-        widget=forms.Textarea(
-            attrs={
-                "placeholder": "축사설명",
-                "class": "form-control"
-            }
-        )
-    )
+      required=False,
+      widget=forms.Textarea(
+        attrs={
+          "placeholder": "축사설명",
+          "class": "form-control"
+        }
+      ))
 
     class Meta:
-        model = Barn
-        fields = ('barn_name', 'barn_info_scale', 'barn_info_volumn', 'barn_info_bigo')
+      model = Barn
+      fields = ('barn_name', 'barn_info_scale', 'barn_info_volumn', 'barn_info_bigo')
 
 # barn 수정 form
-class barnUpdateForm(forms.ModelForm):
+class BarnUpdateForm(forms.ModelForm):
+    barn_code = forms.IntegerField(
+      required=True,
+      widget=forms.HiddenInput(),
+    )
     barn_name = forms.CharField(
         widget=forms.TextInput(
             attrs={
@@ -279,4 +283,4 @@ class barnUpdateForm(forms.ModelForm):
 
     class Meta:
         model = Barn
-        fields = ('barn_name', 'barn_info_scale', 'barn_info_volumn', 'barn_info_bigo')
+        fields = ('barn_code', 'barn_name', 'barn_info_scale', 'barn_info_volumn', 'barn_info_bigo')

@@ -36,7 +36,9 @@
         <h2 class="h4 mb-0">축사 정보</h2>
         <div>
             <div>
-                {% comment %} <button class="btn btn-sm btn-pill btn-outline-info" hx-get="{% url 'farm_management:barnInsertPage' %}" hx-target="#barn_insert_dialog">+축사등록</button> {% endcomment %}
+            {% if farm_user is not None %}
+                <button class="btn btn-sm btn-pill btn-outline-info" hx-get="{% url 'farms:barnInsertPage' %}" hx-target="#barn_insert_dialog">+축사등록</button>
+            {% endif %}
             </div>
         </div>
     </div>
@@ -51,8 +53,8 @@
                         <th class="border-0 rounded-end" style="text-align:center">축사 설명</th>
                     </tr>
                 </thead>
-                {% comment %} <tbody hx-trigger="load, barnListPageChanged from:body" hx-get="{% url 'farm_management:barnListPage' %}" hx-target="this">
-                </tbody> {% endcomment %}
+                <tbody hx-trigger="load, barnListPageChanged from:body" hx-get="{% url 'farms:barnListPage' %}" hx-target="this">
+                </tbody>
             </table>
         </div>
     </div>
@@ -102,8 +104,5 @@
             document.getElementById("barn_update_dialog").innerHTML = ""
         })
     }
-    {% comment %} document.getElementsByName('company_num').addEventListener('keyup', (e)=>{
-        console.log(e)
-    }) {% endcomment %}
 </script>
 {% endblock javascripts %}

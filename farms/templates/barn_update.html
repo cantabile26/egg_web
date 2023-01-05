@@ -4,6 +4,7 @@
         <h5 class="modal-title">축사 수정</h5>
     </div>
     <div class="modal-body">    
+        {{form.barn_code}}
         <div class="form-group mb-4">
         <label for="barn_name">축사이름</label>
             <div class="input-group">
@@ -38,9 +39,12 @@
             </div>
         </div>
     </div>
-    <div class="modal-footer">
-        <button type="button" data-bs-dismiss="modal" class="btn btn-gray-200">취소</button>
-        <button type="submit" class="btn btn-info">수정하기</button>
+    <div class="modal-footer justify-content-between">
+        <button type="button" data-bs-dismiss="modal" class="btn btn-danger" hx-get="{% url 'farms:barnDelete' barn_data.barn_code %}">삭제</button>
+        <div>
+            <button type="button" data-bs-dismiss="modal" class="btn btn-gray-200">취소</button>
+            <button type="submit" class="btn btn-info">수정하기</button>
+        </div>
     </div>
 </div>
 </form>

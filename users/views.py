@@ -7,6 +7,8 @@ from django.utils import timezone
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
+from farms.models import User_Farm
+
 # 로그인
 def login_view(request):
   form = LoginForm(request.POST or None)
@@ -20,9 +22,12 @@ def login_view(request):
       en_username = s2j1c1_encrypt(username)
       
       user = authenticate(request, username=en_username, password=password)
-      print(user)
+      
       if user is not None:
         login(request, user)
+        user_farm = User_Farm.objects.get(user_id=user)
+        print(user_farm.farm_farm_code)
+        request.session['farm_code'] = user_farm.farm_farm_code.farm_code
         return HttpResponseRedirect(reverse('main:mainPage'))
       else:
         msg = "다시 시도해주세요."

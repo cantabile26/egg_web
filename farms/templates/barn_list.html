@@ -1,7 +1,7 @@
 {%for barn in barn_list%}
     <tr>
         <td class="text-center">
-            <a class="text-info fw-bold" hx-get="{% url 'farm_management:barnUpdatePage' %}" hx-target="#barn_update_dialog">{{barn.barn_name}}</a>
+            <a class="text-info fw-bold" hx-get="{% url 'farms:barnUpdatePage' barn.barn_code %}" hx-target="#barn_update_dialog">{{barn.barn_name}}</a>
         </td>
         <td class="text-center">
             <a class="text-info fw-bold">{{barn.barn_info_scale}}</a>
@@ -10,11 +10,18 @@
             <a class="text-info fw-bold">{{barn.barn_info_volumn}}</a>
         </td>
         <td class="text-center">
-            <a class="text-info fw-bold">{{barn.barn_info_bigo}}</a>
+            {% if  barn.barn_info_bigo%}
+            <span data-bs-toggle="tooltip" data-bs-placement="top"
+            data-bs-title="{{barn.barn_info_bigo}}">
+                <i class="fa-solid fa-circle-info"></i>
+            </span>
+            {% endif %}
         </td>
     </tr>
     {% empty %}
-        <div class="text-center">
+    <tr class="text-center" style="width:100%">
+        <td colspan="4" style>
             <small class="text-uppercase text-muted">등록된 축사가 없습니다.</small>
-        </div>
+        </td>
+    </tr>
 {% endfor%}  

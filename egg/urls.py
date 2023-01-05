@@ -6,6 +6,7 @@ from main import urls as main
 from users import urls as users
 from dev import urls as dev
 from farms import urls as farms
+from eggmodel import urls as eggmodel
 from eggtemp import urls as eggtemp
 from eggpagetemp import urls as eggpagetemp
 from eggtabletemp import urls as eggtabletemp
@@ -21,6 +22,8 @@ urlpatterns = [
     path('dev/', include(dev)),
     #farm
     path('farm/', include(farms)),
+    #eggmodel
+    path('eggmodel', include(eggmodel)),
     #template 
     path('eggtemp/', include(eggtemp)),
     path('eggpagetemp/', include(eggpagetemp)),

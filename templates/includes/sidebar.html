@@ -77,12 +77,20 @@
           <span class="sidebar-text">사용자관리</span>
         </a>
       </li>
-      <li class="nav-item {% if 'dashboard' in segment %} active {% endif %}">
+      <li class="nav-item {% if 'farm' in segment %} active {% endif %}">
         <a href="{% url 'farms:farmViewPage' %}" class="nav-link">
           <span class="sidebar-icon">
             <i class="fa-solid fa-tractor"></i>
           </span> 
           <span class="sidebar-text">농가관리</span>
+        </a>
+      </li>
+      <li class="nav-item {% if 'eggmodel' in segment %} active {% endif %}">
+        <a href="{% url 'eggmodel:eggModelView' %}" class="nav-link">
+          <span class="sidebar-icon">
+            <i class="fa-solid fa-egg"></i>
+          </span> 
+          <span class="sidebar-text">&nbsp;&nbsp;계란선별기</span>
         </a>
       </li>
       <li class="nav-item {% if 'eggtabletemp' in segment %} active {% endif %}">
