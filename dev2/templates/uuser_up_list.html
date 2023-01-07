@@ -1,0 +1,30 @@
+{%for up in uuser%}
+  <tr>
+    <td class="text-center align-middle p-2">
+        {{up.id}}
+    </td>
+
+    <td class="text-center align-middle p-2">
+        {{up.user_type}}
+    </td>
+
+    <td class="text-center align-middle p-2">
+      {{up.nickname}}
+    </td>
+
+    <td class="text-center align-middle p-2">
+      {{up.user_status}}
+    </td>
+
+    <td class="text-center align-middle p-2">
+      <a class="text-info fw-bold" hx-get="{% url 'dev2:aaaPage' up.id%}" hx-target="#code_up_update_dialog">
+        수정
+      </a>
+    </td>
+  </tr>
+
+  {% empty %}
+  <div class="text-center">
+    <small class="text-uppercase text-muted">등록된 내용이 없습니다.</small>
+  </div>
+{% endfor%}  

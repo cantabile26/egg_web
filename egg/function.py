@@ -1,5 +1,11 @@
 import os
 import base64
+from django.db.models import Q
+from dev.models import CodeDown
+from urllib.parse import urlencode, unquote, quote_plus
+import requests
+from bs4 import BeautifulSoup
+
 
 # 암호화
 def s2j1c1_encrypt(value):
@@ -38,3 +44,48 @@ def s2j1c1_decrypt(value):
     result = val_res_str+result
 
   return result
+
+
+# 코드값 가져오기
+def code_down_value(up, down=None):
+  q = Q()
+  q.add(Q(code_up_code=up), q.AND)
+  if down is not None:
+    q.add(Q(code_down=down), q.AND)
+  
+  if down is not None:
+    code_down_list = CodeDown.objects.get(q)
+  else:
+    code_down_list = CodeDown.objects.filter(q)
+  
+  return code_down_list
+  
+  
+# 공공데이터 연결
+def api_connect(type, option):
+  if type == 'price':
+    url = os.getenv('PRICE_URL')
+  elif type == 'weather':
+    url = os.getenv('PRICE_URL')
+  
+  params = {quote_plus('serviceKey'):os.getenv('DECODING_KEY')}
+  for i, (k,v) in enumerate(option.items()):
+    params[quote_plus(k)] = v
+  
+  queryParams = "?"+urlencode(params)
+  
+  res = requests.get(url + queryParams)
+  xml = res.text
+  soup = BeautifulSoup(xml, 'html.parser')
+  
+  # number of rows
+  nor = soup.find('totalcount').text
+  params[quote_plus('numOfRows')] = nor
+  
+  total_queryParams = "?"+urlencode(params)
+  total_res = requests.get(url + total_queryParams)
+  total_xml = total_res.text
+  total_soup = BeautifulSoup(total_xml, 'html.parser')
+  # print(total_soup)
+  
+  return total_soup

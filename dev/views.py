@@ -204,13 +204,14 @@ def code_down_update(request, code_up_code, code_down_code):
     
   if request.method == 'POST':
     form = CodeDownUpdateForm(request.POST, instance=code_down_data)
-    msg = "등록이 완료되었습니다."
-    success = True
     
     if form.is_valid():
       new_commit = form.save(commit=False)
       new_commit.update_id = request.user.username
       new_commit.save()
+      
+      msg = "등록이 완료되었습니다."
+      success = True
       
       return HttpResponse(status=204, headers={'HX-Trigger':'codeDownListChanged'})
   else:

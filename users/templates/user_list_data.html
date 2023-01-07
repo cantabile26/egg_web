@@ -1,0 +1,31 @@
+{%for user in users%}
+  <tr onclick="location.href='{% url 'users:userUpdateViewPage' user.id%}'" hx-get="{% url 'users:userUpdateViewPage' user.id%}" hx-target="#user_update_dialog">
+    <td class="text-center align-middle p-2">
+        {{user.id}}
+    </td>
+    <td class="text-center align-middle p-2">
+      {{user.de_username}}
+    </td>
+    <td class="text-center align-middle p-2">
+      {{user.nickname}}
+    </td>
+    <td class="text-center align-middle p-2">
+      {{user.email}}
+    </td>
+    <td class="text-center align-middle p-2">
+        {{user.user_type_text}}
+    </td>
+    <td class="text-center align-middle p-2">
+      {{user.user_status_text}}
+    </td>
+    <td class="text-center align-middle p-2">
+      {{user.insert_date|date:'Y-m-d'}}
+    </td>
+  </tr>
+  {% empty %}
+  <tr class="text-center" style="width:100%">
+    <td colspan="5">
+      <small class="text-uppercase text-muted">등록된 내용이 없습니다.</small>
+    </td>
+  </tr>
+{% endfor%}  

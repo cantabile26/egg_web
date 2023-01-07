@@ -1,0 +1,86 @@
+{% extends 'layouts/base.html' %}
+{% block title %} 계란선별-계란시세 {% endblock %} 
+{% load static %}
+
+<!-- css-->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+  <div class="d-block mb-4 mb-md-0">
+      <h2 class="h4">계란시세</h2>
+      <p class="mb-0"></p>
+  </div>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div>
+      <input data-datepicker="" class="form-control" id="start" type="text" placeholder="yyyy년 mm월 dd일" value="{{start_date}}">
+    </div>
+    <div>
+      <p class="fs-4">~</p>
+    </div>
+    <div>
+      <input data-datepicker="" class="form-control" id="end" type="text" placeholder="yyyy년 mm월 dd일" value="{{end_date}}">
+    </div>
+    <div class="ms-1">
+      <button type="button" class="btn btn-tertiary" onclick="search_egg_price_list();">조회</button>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <div class="card border-0 shadow">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-centered table-nowrap mb-0 table-hover rounded">
+            <thead class="thead-light text-xl-center">
+              <tr>
+                <th rowspan="2" class="border-0 align-middle border-end rounded-start">일자</th>
+                <th colspan="5" class="border-0 border-end">도매</th>
+                <th colspan="5" class="border-0 rounded-end">산지</th>
+              </tr>
+              <tr>
+                <th class="border-0 ">대란</th>
+                <th class="border-0 ">중란</th>
+                <th class="border-0 ">소란</th>
+                <th class="border-0 ">특란</th>
+                <th class="border-0 border-end">왕란</th>
+                <th class="border-0 ">대란</th>
+                <th class="border-0 ">중란</th>
+                <th class="border-0 ">소란</th>
+                <th class="border-0 ">특란</th>
+                <th class="border-0 rounded-end">왕란</th>
+              </tr>
+            </thead>
+            <tbody hx-trigger="load, eggPriceListChange from:body" hx-get="{% url 'eggprice:priceViewList' start_date_pr end_date_pr %}" hx-target="this" id="egg_price_list" hx-swap-oob="true">
+            </tbody>
+          </table>
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+{% endblock content %}
+
+
+{% block javascripts %}
+<script>
+function search_egg_price_list(){
+  let start_list = $("#start").val().split('/');
+  let end_list = $("#end").val().split('/');
+
+  let start_date = start_list[2]+start_list[0]+start_list[1];
+  let end_date = end_list[2]+end_list[0]+end_list[1];
+  console.log(start_date)
+  console.log(end_date)
+  
+  htmx.ajax('GET', '/eggprice/egg_price_list/'+start_date+"/"+end_date, {target:'#egg_price_list', swap:'innerHTML'})
+}
+</script>
+{% endblock javascripts %}

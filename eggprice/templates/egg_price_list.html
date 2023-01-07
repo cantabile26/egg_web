@@ -1,0 +1,17 @@
+{% for key, value in prices.items %}
+  <tr>
+    <td class="text-center align-middle">{{key|date:'Y년 m월 d일'}}</td>
+  {% for type, price in  value.items%}
+    {% if type == 'do' %}
+      {% for data in price  %}
+        <td class="text-center align-middle">{{data}}</td>
+      {% endfor %}
+    {% endif %} 
+    {% if type == 'sa' %}
+      {% for data in price  %}
+        <td class="text-center align-middle">{{data}}</td>
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+  </tr>
+{% endfor %}

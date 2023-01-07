@@ -10,7 +10,7 @@ from eggmodel import urls as eggmodel
 from eggtemp import urls as eggtemp
 from eggpagetemp import urls as eggpagetemp
 from eggtabletemp import urls as eggtabletemp
-
+from eggprice import urls as eggprice
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,7 +23,9 @@ urlpatterns = [
     #farm
     path('farm/', include(farms)),
     #eggmodel
-    path('eggmodel', include(eggmodel)),
+    path('eggmodel/', include(eggmodel)),
+    #eggprice
+    path('eggprice/', include(eggprice)),
     #template 
     path('eggtemp/', include(eggtemp)),
     path('eggpagetemp/', include(eggpagetemp)),

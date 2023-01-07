@@ -1,0 +1,22 @@
+
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title">수정</h5>
+  </div>
+
+  <div class="modal-body">
+    <form method="POST" hx-post="{{ request.path }}">
+      {% csrf_token %}
+      <table>
+      {{form.as_table}}
+      </table>
+      <br>
+      <div class="modal-footer">
+        <button type="button" data-bs-dismiss="modal" class="btn btn-gray-200">취소</button>
+        <button type="submit" class="btn btn-info">수정하기</button>
+      </div>
+    </form>
+    
+  </div>
+  </div>
+</div>

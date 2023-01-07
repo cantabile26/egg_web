@@ -1,0 +1,264 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} 경영관리 {% endblock %} 
+{% load static %}
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<div id="code_up_insert_modal" class="modal fade">
+    <div id="code_up_insert_dialog" class="modal-dialog" hx-target="this"></div>
+</div>
+
+<div id="code_up_update_modal" class="modal fade">
+    <div id="code_up_update_dialog" class="modal-dialog" hx-target="this"></div>
+</div>
+
+
+<div class="py-4">
+    <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
+        <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
+            <li class="breadcrumb-item">
+                <a href="#">
+                    <svg class="icon icon-xxs" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                </a>
+            </li>
+            <li class="breadcrumb-item"><a href="#">Tables</a></li>
+            <li class="breadcrumb-item active" aria-current="page" >경영관리</li>
+        </ol>
+    </nav>
+    <div class="d-flex justify-content-between w-100 flex-wrap">
+        <div class="mb-3 mb-lg-0">
+            <h1 class="h4">경영 관리1</h1>
+            <p class="mb-0">Dozens of reusable components built to provide buttons, alerts, popovers, and more.</p>
+        </div>
+    </div>
+</div>
+<div class="table-settings mb-4">
+    <div class="row align-items-center justify-content-between">
+        <div class="col col-md-6 col-lg-3 col-xl-4">
+            <div class="input-group me-2 me-lg-3 fmxw-400">
+                <span class="input-group-text">
+                    {% comment %} <svg class="icon icon-xs" x-description="Heroicon name: solid/search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                    </svg> {% endcomment %}
+                    <div class="input-group-append">
+                        <button class="btn btn-sm btn-primary" type="button" id="btn_search">찾기</button>
+                    </div>
+                </span>
+                <input type="text" id="search_kw" class="form-control" value="{{ kw|default_if_none:'' }}" placeholder="검색 ㄱㄱ">
+            </div>
+        </div>
+
+                    {% comment %} 페이지 표지 수 토글 {% endcomment %}
+        {% comment %} <div class="col-4 col-md-2 col-xl-1 ps-md-0 text-end">
+            <div class="dropdown">
+                <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path></svg>
+                    <span class="visually-hidden">Toggle Dropdown</span>
+                </button>
+                <div class="dropdown-menu dropdown-menu-xs dropdown-menu-end pb-0">
+                    <span class="small ps-3 fw-bold text-dark">Show</span>
+                    <a class="dropdown-item d-flex align-items-center fw-bold" href="#">10 <svg class="icon icon-xxs ms-auto" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></a>
+                    <a class="dropdown-item fw-bold" href="#">20</a>
+                    <a class="dropdown-item fw-bold rounded-bottom" href="#">30</a>
+                </div>
+            </div>
+        </div> {% endcomment %}
+    </div>
+</div>
+
+
+
+
+<div class="card border-0 shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-centered table-nowrap mb-0 rounded">
+                <thead class="thead-light">
+                    <tr>
+                        <th class="border-0 rounded-start">#</th>
+                        <th class="border-0">농장번호</th>
+                        <th class="border-0">사업장번호</th>
+                        <th class="border-0">회계코드</th>
+                        <th class="border-0">계좌번호</th>
+                        <th class="border-0">출납일</th>
+                        <th class="border-0">발의일</th>
+                        <th class="border-0">결제일</th>
+                        <th class="border-0">등기일</th>
+                        <th class="border-0">결의구분</th>
+                        <th class="border-0">계정과목</th>
+                        <th class="border-0">적요</th>
+                        <th class="border-0">수입</th>
+                        <th class="border-0">지출</th>
+                        <th class="border-0">자금원천</th>
+                        <th class="border-0">정렬</th>
+                        <th class="border-0">비고</th>
+                        <th class="border-0 rounded-end">Change</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Item -->
+                    {% for aa in account_ing %}
+                    <tr>
+                        <td>
+                            {{ forloop.counter }}
+                        </td>
+                        <td>
+                            {{aa.farm_code}}
+                        </td>
+                        <td>
+                            {{aa.barn_code}}
+                        </td>
+                        <td>
+                            {{aa.회계코드}}
+                        </td>
+                        <td>
+                            {{aa.계좌번호}}
+                        </td>
+                        <td>
+                            {{aa.출납일}}
+                        </td>
+                        <td>
+                            {{aa.발의일}}
+                        </td>
+                        
+                    </tr>
+
+                    {% endfor %}
+                    <!-- End of Item -->
+
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div >
+        {% comment %} <button class="btn btn-sm btn-primary mb-3 ms-3" type="button" style="float: right;"> 수 정 </button> {% endcomment %}
+
+        <a class="nav-link" hx-get="{% url 'eggmanage:eggmanageinputTablesPage' %}" hx-target="#code_up_update_dialog">
+            <button class="btn btn-sm btn-primary mb-3" type="button" style="float: right;"> 입력하기 </button>
+        </a>
+
+        {% comment %} <a class="nav-link" hx-get="{% url 'eggmanage:updateaccountPage' %}" hx-target="#code_up_update_dialog">
+            <button class="btn btn-sm btn-primary mb-3" type="button" style="float: right;"> 수정하기 </button>
+        </a> {% endcomment %}
+
+    </div>
+</div>
+
+<ul class="pagination justify-content-center">
+    <!-- 이전페이지 -->
+    {% if accounting.has_previous %}
+    <li class="page-item">
+        <a class="page-link" data-page="{{ accounting.previous_page_number }}"
+           href="javascript:void(0)">이전</a>
+    </li>
+    {% else %}
+    <li class="page-item disabled">
+        <a class="page-link" tabindex="-1" aria-disabled="true"
+           href="javascript:void(0)">이전</a>
+    </li>
+    {% endif %}
+    <!-- 페이지리스트 -->
+    {% for page_number in accounting.paginator.page_range %}
+    {% if page_number >= accounting.number|add:-5 and page_number <= accounting.number|add:5 %}
+    {% if page_number == accounting.number %}
+    <li class="page-item active" aria-current="page">
+        <a class="page-link" data-page="{{ page_number }}"
+           href="javascript:void(0)">{{ page_number }}</a>
+    </li>
+    {% else %}
+    <li class="page-item">
+        <a class="page-link" data-page="{{ page_number }}"
+           href="javascript:void(0)">{{ page_number }}</a>
+    </li>
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+    <!-- 다음페이지 -->
+    {% if accounting.has_next %}
+    <li class="page-item">
+        <a class="page-link" data-page="{{ accounting.next_page_number }}"
+           href="javascript:void(0)">다음</a>
+    </li>
+    {% else %}
+    <li class="page-item disabled">
+        <a class="page-link" tabindex="-1" aria-disabled="true"
+           href="javascript:void(0)">다음</a>
+    </li>
+    {% endif %}
+</ul>
+
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Office</th>
+                        <th>Age</th>
+                        <th>Start date</th>
+                        <th>Salary</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</div>
+<!-- 페이징처리 끝 -->
+{% comment %} action="{% url 'eggmanageTablesPage' %}" {% endcomment %}
+<form id="searchForm" method="get" >
+    <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+    <input type="hidden" id="page" name="page" value="{{ page }}">
+</form>
+
+    {% comment %} <div class="card border-0 shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-centered table-nowrap mb-0 rounded">
+                </table>
+            </div>
+        </div>
+    </div> {% endcomment %}
+
+
+    {% endblock content %}
+
+    <!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+    <script src="{% static 'js/dev/code_list.js' %}"></script>
+    <script type='text/javascript'>
+        const page_elements = document.getElementsByClassName("page-link");
+        Array.from(page_elements).forEach(function(element) {
+            element.addEventListener('click', function() {
+                document.getElementById('page').value = this.dataset.page;
+                document.getElementById('searchForm').submit();
+            });
+        });
+        const btn_search = document.getElementById("btn_search");
+        btn_search.addEventListener('click', function() {
+            document.getElementById('kw').value = document.getElementById('search_kw').value;
+            document.getElementById('page').value = 1;  // 검색버튼을 클릭할 경우 1페이지부터 조회한다.
+            document.getElementById('searchForm').submit();
+        });
+    </script>
+    
+{% endblock javascripts %}

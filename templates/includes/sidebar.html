@@ -93,6 +93,14 @@
           <span class="sidebar-text">&nbsp;&nbsp;계란선별기</span>
         </a>
       </li>
+      <li class="nav-item {% if 'eggprice' in segment %} active {% endif %}">
+        <a href="{% url 'eggprice:priceViewPage' %}" class="nav-link">
+          <span class="sidebar-icon">
+            <i class="fa-solid fa-money-bill-trend-up"></i>
+          </span> 
+          <span class="sidebar-text">&nbsp;계란시세</span>
+        </a>
+      </li>
       <li class="nav-item {% if 'eggtabletemp' in segment %} active {% endif %}">
         <span
           class="nav-link  collapsed  d-flex justify-content-between align-items-center"
