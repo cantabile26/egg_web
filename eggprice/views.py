@@ -98,3 +98,4 @@ def price_data_list(request, start_date, end_date):
   
   
   return render(request, "egg_price_list.html", context)
+

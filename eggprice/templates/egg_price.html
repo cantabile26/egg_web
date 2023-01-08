@@ -71,6 +71,7 @@
 
 {% block javascripts %}
 <script>
+
 function search_egg_price_list(){
   let start_list = $("#start").val().split('/');
   let end_list = $("#end").val().split('/');
@@ -82,5 +83,8 @@ function search_egg_price_list(){
   
   htmx.ajax('GET', '/eggprice/egg_price_list/'+start_date+"/"+end_date, {target:'#egg_price_list', swap:'innerHTML'})
 }
+
 </script>
+
+
 {% endblock javascripts %}

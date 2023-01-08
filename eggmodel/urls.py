@@ -4,5 +4,5 @@ from eggmodel import views
 app_name = "eggmodel"
 
 urlpatterns = [
-  path('/', views.view_egg_model, name="eggModelView")
+  path('', views.view_egg_model, name="eggModelView")
 ]

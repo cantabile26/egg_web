@@ -1,0 +1,35 @@
+{% extends 'layouts/base.html' %}
+{% block title %} 결과 {% endblock %} 
+{% load static %}
+
+<!-- css-->
+{% block stylesheets %}
+{% endblock stylesheets %}
+
+
+{% block content %}
+<div class="alert alert-warning" role="alert">
+  이미지는 static/image0.jpg에 생성하였습니다. 디텍트를 한번더 하시면 파일이 따로 저장되지 않고 삭제됩니다.
+</div>
+<div class="alert alert-success" role="alert"> 모델 이름 : {{ model_name }} </div>
+  <form class="form-signin card_res mb-6" method=post enctype=multipart/form-data>
+    <img class="mb-4" src="https://search.pstatic.net/common/?autoRotate=true&quality=100&type=f640_380&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220203_198%2F1643877131982ALbkt_PNG%2F1.1.png" width="120" style="border-radius:50%">
+    <h1 class="h3 mb-3 font-weight-normal">Prediction:</h1>
+    <img class="img-fluid" src="{% static "/image0.jpg" %}" alt="User_Image" max-width="100%"
+      height="auto">  
+
+    <button class="btn mb-4"> Test Another Image </button>
+  </form>
+
+
+
+
+
+
+<!-- Github Ribbon End-->
+{% endblock content %}
+
+
+
+{% block javascripts %}
+{% endblock javascripts %}

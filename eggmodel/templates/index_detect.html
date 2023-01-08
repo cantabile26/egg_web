@@ -1,0 +1,75 @@
+{% extends 'layouts/base.html' %}
+{% block title %} 계란디텍 {% endblock %} 
+{% load static %}
+
+{% block stylesheets %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% comment %} <link rel="stylesheet" href="/static/detect/style.css"> {% endcomment %}
+<link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+  integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+<style>
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+</style>
+
+
+{% endblock stylesheets %}
+
+{% block content %}
+
+  <form class="form-signin card mb-6" method=post enctype=multipart/form-data>
+    <img class="mb-4" src="https://search.pstatic.net/common/?autoRotate=true&quality=100&type=f640_380&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220203_198%2F1643877131982ALbkt_PNG%2F1.1.png" alt="" width="120"
+      style="border-radius:100%">
+    <h1 class="h3 mb-3 font-weight-normal">이미지를 올려주세요</h1>
+    <input type="file" name="file" class="form-control-file" id="inputfile">
+    <br/>
+    <button>
+      <span class="box">
+        선별하기
+      </span>
+    </button>
+  </form>
+
+{% endblock content %}
+
+
+
+
+<!-- js-->
+{% block javascripts %}
+<script src="//code.jquery.com/jquery-3.3.1.slim.min.js"
+integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+crossorigin="anonymous"></script>
+<script src="//stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+crossorigin="anonymous"></script>
+<script type="text/javascript">
+$('#inputfile').bind('change', function () {
+  let fileSize = this.files[0].size / 1024 / 1024; // this gives in MB
+  if (fileSize > 1) {
+    $("#inputfile").val(null);
+    alert('file is too big. images more than 1MB are not allowed')
+    return
+  }
+
+  let ext = $('#inputfile').val().split('.').pop().toLowerCase();
+  if ($.inArray(ext, ['jpg', 'jpeg']) == -1) {
+    $("#inputfile").val(null);
+    alert('only jpeg/jpg files are allowed!');
+  }
+});
+</script>
+{% endblock javascripts %}
