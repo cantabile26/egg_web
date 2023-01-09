@@ -40,7 +40,7 @@ DEBUG = True
 # Assets Management
 ASSETS_ROOT = os.getenv('ASSETS_ROOT', '/static/') 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
